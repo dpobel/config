@@ -2,3 +2,7 @@ https://github.com/kien/ctrlp.vim.git
 https://github.com/scrooloose/nerdtree.git
 https://github.com/scrooloose/syntastic.git
 https://github.com/Lokaltog/vim-powerline.git
+https://github.com/majutsushi/tagbar.git
+https://github.com/tobyS/vmustache.git
+https://github.com/tobyS/pdv.git
+https://github.com/SirVer/ultisnips.git
