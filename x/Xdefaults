@@ -1,0 +1,68 @@
+URxvt*geometry: 120x40
+! URxvt*font: xft:Terminus:style=Regular:pixelsize=14:antialias=false
+! Avoid the cursor issue
+URxvt*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*
+
+URxvt*saveLines: 10000
+URxvt*scrollBar: false
+
+URxvt*cursorColor: white
+URxvt*cursorColor2: #aaaaaa
+
+URxvt.iconFile: /usr/share/icons/Humanity/apps/48/bash.svg
+
+URxvt.perl-lib: .urxvt/
+URxvt.perl-ext-common: default,matcher,tabbedex
+
+URxvt.url-launcher: /usr/bin/firefox
+URxvt.matcher.button: 1
+
+URxvt.tabbed.tabbar-fg: 7
+URxvt.tabbed.tabbar-bg: 8
+URxvt.tabbed.tab-fg: 9
+URxvt.tabbed.tab-bg: 8
+URxvt.tabbed.title: true
+URxvt.tabbed.title-bg: 8
+URxvt.tabbed.title-fg: 7
+
+URxvt*termName: rxvt-256color
+
+! taken from http://xcolors.net/dl/gnometerm
+! Black
+*color0:   #000000
+*color8:   #555753
+
+! Red
+*color1:   #cc0000
+*color9:   #ef2929
+
+! Green
+*color2:   #4e9a06
+*color10:  #8ae234
+
+! Yellow
+*color3:   #c4a000
+*color11:  #fce94f
+
+! Blue
+*color4:   #3465a4
+*color12:  #729fcf
+
+! Magenta
+*color5:   #75507b
+*color13:  #ad7fa8
+
+! Cyan
+*color6:   #06989a
+*color14:  #34e2e2
+
+! White
+*color7:   #d3d7cf
+*color15:  #eeeeec
+
+
+URxvt*foreground: #ffffff
+URxvt*background: #000000
+
+Xft.lcdfilter: ldcdefault
+Xft.hintstyle: hintslight
