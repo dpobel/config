@@ -397,6 +397,10 @@ call s:X("rubyPredefinedIdentifier","de5577","","","Red","")
 hi link javaScriptValue Constant
 hi link javaScriptRegexpString rubyRegexp
 
+" Modification
+" make javascript identifier bold
+call s:X("Identifier","c6b6ee","","bold","LightCyan","")
+
 " C
 
 hi link cOperator Constant
