@@ -415,6 +415,10 @@ hi link objcMessageName Identifier
 " Tag list
 hi link TagListFileName Directory
 
+" Modification
+" ColorColumn
+call s:X("ColorColumn","","222222","","","")
+
 " delete functions {{{
 delf s:X
 delf s:rgb

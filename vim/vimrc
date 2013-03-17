@@ -23,6 +23,9 @@ set expandtab
 set ts=4
 set sw=4
 
+set tw=80
+set colorcolumn=80
+
 set modeline
 
 syntax on
