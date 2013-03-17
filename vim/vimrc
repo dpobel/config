@@ -47,3 +47,7 @@ nnoremap <silent> <ins> :setlocal paste!<CR>i
 autocmd InsertLeave <buffer> se nopaste
 
 autocmd VimLeavePre * :mksession! ~/tmp/stopped.vim
+
+au BufRead,BufNewFile *.twig		set filetype=jinja
+au BufRead,BufNewFile *.html.twig		set filetype=htmljinja
+au BufRead,BufNewFile *.swig		set filetype=htmljinja
