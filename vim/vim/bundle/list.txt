@@ -6,3 +6,4 @@ https://github.com/majutsushi/tagbar.git
 https://github.com/tobyS/vmustache.git
 https://github.com/tobyS/pdv.git
 https://github.com/SirVer/ultisnips.git
+https://github.com/danro/rename.vim.git
