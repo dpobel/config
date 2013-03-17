@@ -51,3 +51,5 @@ autocmd VimLeavePre * :mksession! ~/tmp/stopped.vim
 au BufRead,BufNewFile *.twig		set filetype=jinja
 au BufRead,BufNewFile *.html.twig		set filetype=htmljinja
 au BufRead,BufNewFile *.swig		set filetype=htmljinja
+
+au BufRead,BufNewFile *.md  set ft=markdown | set tw=80
