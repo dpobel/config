@@ -1,0 +1,46 @@
+
+execute pathogen#infect()
+
+set bg=dark
+
+set incsearch
+set hlsearch
+
+set scrolljump=5
+set sidescrolloff=5
+set scrolloff=3
+
+set dir=~/tmp
+set sm
+set nobackup
+set history=50
+
+set laststatus=2
+
+set backspace=start,eol,indent
+
+set expandtab
+set ts=4
+set sw=4
+
+set modeline
+
+syntax on
+filetype plugin indent on
+
+"let g:zenburn_high_Contrast=1
+"colorscheme zenburn
+"colorscheme 256-grayvim
+"colorscheme symfony
+colorscheme jellybeans
+
+map <F2> :NERDTreeToggle<CR>
+map <F3> :TagbarToggle<CR>
+
+cnoremap w!! w !sudo tee % >/dev/null
+
+set pastetoggle=<ins>
+nnoremap <silent> <ins> :setlocal paste!<CR>i
+autocmd InsertLeave <buffer> se nopaste
+
+autocmd VimLeavePre * :mksession! ~/tmp/stopped.vim
