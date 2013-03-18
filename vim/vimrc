@@ -52,4 +52,5 @@ au BufRead,BufNewFile *.swig		set filetype=htmljinja
 
 au BufRead,BufNewFile *.md  set ft=markdown | set tw=80
 
+hi LineNr ctermbg=235
 hi ColorColumn ctermbg=233
