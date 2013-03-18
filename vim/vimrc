@@ -23,9 +23,6 @@ set expandtab
 set ts=4
 set sw=4
 
-set tw=80
-set colorcolumn=80
-
 set modeline
 
 syntax on
@@ -54,3 +51,5 @@ au BufRead,BufNewFile *.html.twig		set filetype=htmljinja
 au BufRead,BufNewFile *.swig		set filetype=htmljinja
 
 au BufRead,BufNewFile *.md  set ft=markdown | set tw=80
+
+hi ColorColumn ctermbg=233
