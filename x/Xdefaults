@@ -1,6 +1,6 @@
 URxvt*geometry: 120x40
 ! URxvt*font: xft:Terminus:style=Regular:pixelsize=14:antialias=false
-! Avoid the cursor issue
+! using the old style font loading to avoid the cursor to sometime disappear...
 URxvt*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*
 
 URxvt*saveLines: 10000
@@ -11,22 +11,32 @@ URxvt*cursorColor2: #aaaaaa
 
 URxvt.iconFile: /usr/share/icons/Humanity/apps/48/bash.svg
 
+! tabbedex is not provided by default (Debian/Ubuntu)
+! put it in ~/.urxvt/
 URxvt.perl-lib: .urxvt/
 URxvt.perl-ext-common: default,matcher,tabbedex
 
+! Launch firefox with the a left click on a URL
 URxvt.url-launcher: /usr/bin/firefox
 URxvt.matcher.button: 1
 
+! Tabs: gray background, ~white text
+! and the opposite for the currently focused tab
 URxvt.tabbed.tabbar-fg: 7
 URxvt.tabbed.tabbar-bg: 8
-URxvt.tabbed.tab-fg: 9
-URxvt.tabbed.tab-bg: 8
+URxvt.tabbed.tab-fg: 8
+URxvt.tabbed.tab-bg: 7
+
+! Display the title of terminal next to tabs list
 URxvt.tabbed.title: true
 URxvt.tabbed.title-bg: 8
 URxvt.tabbed.title-fg: 7
 
+! correct name so that applications detects a 256 color
+! enabled terminal emulator
 URxvt*termName: rxvt-256color
 
+! GNOME Terminal color scheme
 ! taken from http://xcolors.net/dl/gnometerm
 ! Black
 *color0:   #000000
@@ -62,8 +72,11 @@ URxvt*termName: rxvt-256color
 
 
 URxvt*foreground: #ffffff
-URxvt*background: #000000
+! True transparency with shading to stay readable
+URxvt*depth: 32
+URxvt*background: rgba:0000/0000/0000/dddd
 
+! Fade the terminal by 40% when it looses focus
 URxvt*fading: 40
 
 Xft.lcdfilter: ldcdefault
