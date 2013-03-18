@@ -31,11 +31,12 @@ set modeline
 syntax on
 filetype plugin indent on
 
+colorscheme desert256
 "let g:zenburn_high_Contrast=1
 "colorscheme zenburn
 "colorscheme 256-grayvim
 "colorscheme symfony
-colorscheme jellybeans
+"colorscheme jellybeans
 
 map <F2> :NERDTreeToggle<CR>
 map <F3> :TagbarToggle<CR>
