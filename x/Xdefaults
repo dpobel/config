@@ -64,5 +64,7 @@ URxvt*termName: rxvt-256color
 URxvt*foreground: #ffffff
 URxvt*background: #000000
 
+URxvt*fading: 40
+
 Xft.lcdfilter: ldcdefault
 Xft.hintstyle: hintslight
