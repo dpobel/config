@@ -286,6 +286,11 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     "Error
     call <SID>X("Todo", "ff4500", "eeee00", "")
 
+    " Language specific ryles
+    call <SID>X("javaScriptFunction", "6ac86a", "", "bold")
+    call <SID>X("javaScriptIdentifier", "6ac86a", "", "bold")
+    call <SID>X("phpFunctions", "dddddd", "", "")
+
     " delete functions {{{
     delf <SID>X
     delf <SID>rgb
