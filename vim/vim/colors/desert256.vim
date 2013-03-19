@@ -240,7 +240,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     endfun
     " }}}
 
-    call <SID>X("Normal", "cccccc", "000000", "")
+    call <SID>X("Normal", "ffffff", "000000", "")
 
     " highlight groups
     call <SID>X("Cursor", "708090", "f0e68c", "")
@@ -274,12 +274,12 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     "Tooltip
 
     " syntax highlighting groups
-    call <SID>X("Comment", "87ceeb", "", "")
+    call <SID>X("Comment", "4bc3ff", "", "")
     call <SID>X("Constant", "ffa0a0", "", "")
-    call <SID>X("Identifier", "98fb98", "", "none")
+    call <SID>X("Identifier", "6ac86a", "", "none")
     call <SID>X("Statement", "f0e68c", "", "bold")
     call <SID>X("PreProc", "cd5c5c", "", "")
-    call <SID>X("Type", "bdb76b", "", "bold")
+    call <SID>X("Type", "d2d25b", "", "bold")
     call <SID>X("Special", "ffdead", "", "")
     "Underlined
     call <SID>X("Ignore", "666666", "", "")
