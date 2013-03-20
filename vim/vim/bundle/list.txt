@@ -8,3 +8,4 @@ https://github.com/tobyS/pdv.git
 https://github.com/SirVer/ultisnips.git
 https://github.com/danro/rename.vim.git
 https://github.com/tomtom/tcomment_vim.git
+https://github.com/tsaleh/vim-matchit.git
