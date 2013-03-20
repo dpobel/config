@@ -11,6 +11,9 @@ URxvt*cursorColor2: #aaaaaa
 
 URxvt.iconFile: /usr/share/icons/Humanity/apps/48/bash.svg
 
+URxvt.iso14755: off
+URxvt.iso14755_52: off
+
 ! tabbedex is not provided by default (Debian/Ubuntu)
 ! put it in ~/.urxvt/
 URxvt.perl-lib: .urxvt/
