@@ -1,0 +1,7 @@
+#! /bin/sh
+#
+
+
+VGA=`xrandr | grep "VGA1 connected"`
+
+[ "$VGA" != "" ] && xrandr --output VGA1 --auto --left-of eDP1
