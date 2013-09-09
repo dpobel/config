@@ -35,6 +35,26 @@ colorscheme desert256
 "colorscheme symfony
 "colorscheme jellybeans
 
+let g:ctrlp_max_files = 0
+let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_max_height = 20
+"" use the current directory first
+let g:ctrlp_working_path_mode = 'wr'
+let g:ctrlp_clear_cache_on_exit = 1
+""let g:ctrlp_lazy_update = 1
+let g:ctrlp_regexp = 1
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\v(vendor.*vendor$|web$|.*/tests$|.*/cache$|.*/storage$|.*/_fixtures$|.*/coverage$)',
+    \ 'file': '\v(.*debug.js|.*coverage.js|.*min.js|.*min.css)'
+\ }
+""let g:ctrlp_user_command = [ 'ezpublish/console',  '/home/dp/.vim/shell/locate.sh %s']
+" TODO: custom index file for projects
+
+"let g:unite_source_file_rec_max_cache_files=100000
+"call unite#custom#source("file_rec/async", "ignore_pattern", ".*/cache/\\|.*/vendor/.*/vendor/\\|.*/zetacomponents/.*/tests\\|*./storage/\\|.*coverage.js\\|.*debug.js\\|.*/_fixtures")
+"call unite#filters#matcher_default#use(['matcher_glob'])
+"nnoremap <C-p> :Unite -start-insert file_rec/async:!<cr>
+"nnoremap <C-g> :Unite grep:.<cr>
 
 set tags=~/.cache/tags
 
