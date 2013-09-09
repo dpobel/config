@@ -35,6 +35,9 @@ colorscheme desert256
 "colorscheme symfony
 "colorscheme jellybeans
 
+
+set tags=~/.cache/tags
+
 map <F2> :NERDTreeToggle<CR>
 map <F3> :TagbarToggle<CR>
 
