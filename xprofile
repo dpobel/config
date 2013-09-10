@@ -4,4 +4,10 @@
 
 VGA=`xrandr | grep "VGA1 connected"`
 
-[ "$VGA" != "" ] && xrandr --output VGA1 --auto --left-of eDP1
+if [ "$VGA" != "" ] ; then
+    xrandr --output VGA1 --auto --left-of LVDS1
+else
+    xrandr --output VGA1 --off --auto
+fi
+
+killall conky && conky &
