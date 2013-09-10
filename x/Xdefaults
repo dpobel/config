@@ -1,7 +1,7 @@
 URxvt*geometry: 120x40
 ! URxvt*font: xft:Terminus:style=Regular:pixelsize=14:antialias=false
 ! using the old style font loading to avoid the cursor to sometime disappear...
-URxvt*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*
+URxvt*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-u
 
 URxvt*saveLines: 10000
 URxvt*scrollBar: false
