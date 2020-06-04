@@ -1,7 +1,6 @@
 URxvt*geometry: 120x40
-! URxvt*font: xft:Terminus:style=Regular:pixelsize=14:antialias=false
-! using the old style font loading to avoid the cursor to sometime disappear...
-URxvt*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-u
+URxvt*font: xft:Inconsolata Nerd Font Mono:pixelsize=14
+URxvt*letterSpace: -1
 
 URxvt*saveLines: 10000
 URxvt*scrollBar: false
@@ -17,7 +16,7 @@ URxvt.iso14755_52: off
 ! tabbedex is not provided by default (Debian/Ubuntu)
 ! put it in ~/.urxvt/
 URxvt.perl-lib: .urxvt/
-URxvt.perl-ext-common: default,matcher,tabbedex
+URxvt.perl-ext-common: default,matcher,tabbedex,resize-font,-tabbed
 
 ! Launch firefox with the a left click on a URL
 URxvt.url-launcher: /usr/bin/firefox
@@ -25,19 +24,20 @@ URxvt.matcher.button: 1
 
 ! Tabs: gray background, ~white text
 ! and the opposite for the currently focused tab
-URxvt.tabbed.tabbar-fg: 7
-URxvt.tabbed.tabbar-bg: 8
-URxvt.tabbed.tab-fg: 8
-URxvt.tabbed.tab-bg: 7
+URxvt.tabbedex.autohide: 0
+URxvt.tabbedex.tabbar-fg: 7
+URxvt.tabbedex.tabbar-bg: 8
+URxvt.tabbedex.tab-fg: 8
+URxvt.tabbedex.tab-bg: 7
 
 ! Display the title of terminal next to tabs list
-URxvt.tabbed.title: true
-URxvt.tabbed.title-bg: 8
-URxvt.tabbed.title-fg: 7
+URxvt.tabbedex.title: true
+URxvt.tabbedex.title-bg: 8
+URxvt.tabbedex.title-fg: 7
 
 ! correct name so that applications detects a 256 color
 ! enabled terminal emulator
-URxvt*termName: rxvt-256color
+URxvt*termName: xterm-256color
 
 ! GNOME Terminal color scheme
 ! taken from http://xcolors.net/dl/gnometerm

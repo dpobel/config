@@ -13,44 +13,44 @@
     <underMouse>no</underMouse>
   </focus>
   <theme>
-    <name>Misted</name>
+    <name>Nightmare-02</name>
     <titlelayout>NLIMC</titlelayout>
     <keepBorder>yes</keepBorder>
     <animateIconify>yes</animateIconify>
     <titleLayout>NLDIMC</titleLayout>
     <font place="ActiveWindow">
-      <name>Tahoma</name>
-      <size>9</size>
+      <name>Ubuntu Light</name>
+      <size>10</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="InactiveWindow">
-      <name>Tahoma</name>
-      <size>9</size>
+      <name>Ubuntu Light</name>
+      <size>10</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="MenuHeader">
-      <name>Tahoma</name>
+      <name>Ubuntu Light</name>
       <size>9</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="MenuItem">
-      <name>Tahoma</name>
+      <name>Ubuntu Light</name>
       <size>9</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="ActiveOnScreenDisplay">
-      <name>Tahoma</name>
-      <size>18</size>
+      <name>Ubuntu Light</name>
+      <size>14</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="InactiveOnScreenDisplay">
-      <name>Tahoma</name>
-      <size>18</size>
+      <name>Ubuntu Light</name>
+      <size>14</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
@@ -82,15 +82,15 @@
     </popupFixedPosition>
   </resize>
   <dock>
-    <position>TopLeft</position>
-    <stacking>Top</stacking>
+    <position>BottomLeft</position>
+    <stacking>Above</stacking>
     <direction>Horizontal</direction>
     <floatingX>0</floatingX>
     <floatingY>0</floatingY>
-    <autoHide>no</autoHide>
+    <autoHide>yes</autoHide>
     <hideDelay>300</hideDelay>
     <moveButton>A-Left</moveButton>
-    <noStrut>no</noStrut>
+    <noStrut>yes</noStrut>
     <showDelay>300</showDelay>
   </dock>
   <keyboard>
@@ -165,7 +165,7 @@
     </keybind>
     <keybind key="W-C">
       <action name="Execute">
-        <execute>gcalctool</execute>
+        <execute>gnome-calculator</execute>
       </action>
     </keybind>
     <keybind key="W-F">
@@ -180,7 +180,7 @@
     </keybind>
     <keybind key="W-H">
       <action name="Execute">
-          <execute>/usr/bin/google-chrome</execute>
+        <execute>/usr/bin/google-chrome</execute>
       </action>
     </keybind>
     <keybind key="W-T">
@@ -190,22 +190,17 @@
     </keybind>
     <keybind key="Print">
       <action name="Execute">
-        <execute>~/bin/shotup.sh</execute>
+        <execute>scrot</execute>
       </action>
     </keybind>
     <keybind key="C-Print">
       <action name="Execute">
-        <execute>~/bin/shotup.sh -u</execute>
+        <execute>scrot -s</execute>
       </action>
     </keybind>
     <keybind key="A-Print">
       <action name="Execute">
-        <execute>~/bin/shotup.sh -w</execute>
-      </action>
-    </keybind>
-    <keybind key="C-A-Print">
-      <action name="Execute">
-        <execute>~/bin/shotup.sh -w -u</execute>
+        <execute>scrot -u</execute>
       </action>
     </keybind>
     <keybind key="W-K">
@@ -353,30 +348,29 @@
     </keybind>
     <keybind key="A-Up">
       <action name="Execute">
-          <command>amixer -D pulse set Master 5%+ unmute</command>
+        <command>amixer -D pulse set Master 5%+ unmute</command>
       </action>
     </keybind>
     <keybind key="A-Down">
       <action name="Execute">
-          <command>amixer -D pulse set Master 5%- unmute</command>
+        <command>amixer -D pulse set Master 5%- unmute</command>
       </action>
     </keybind>
     <keybind key="XF86AudioRaiseVolume">
-        <action name="Execute">
-            <command>amixer -D pulse set Master 5%+ unmute</command>
-        </action>
+      <action name="Execute">
+        <command>amixer -D pulse set Master 5%+ unmute</command>
+      </action>
     </keybind>
     <keybind key="XF86AudioLowerVolume">
-        <action name="Execute">
-            <command>amixer -D pulse set Master 5%- unmute</command>
-        </action>
+      <action name="Execute">
+        <command>amixer -D pulse set Master 5%- unmute</command>
+      </action>
     </keybind>
     <keybind key="XF86AudioMute">
-        <action name="Execute">
-            <command>amixer set Master toggle</command>
-        </action>
+      <action name="Execute">
+        <command>amixer set Master toggle</command>
+      </action>
     </keybind>
-
   </keyboard>
   <mouse>
     <dragThreshold>3</dragThreshold>
@@ -629,6 +623,11 @@
   </margins>
   <applications>
     <application class="Firefox" role="browser">
+      <decor>no</decor>
+      <maximized>yes</maximized>
+    </application>
+    <application title="*tre sans nom">
+      <!-- spotify -->
       <decor>no</decor>
       <maximized>yes</maximized>
     </application>
