@@ -13,20 +13,20 @@
     <underMouse>no</underMouse>
   </focus>
   <theme>
-    <name>Nightmare-02</name>
+    <name>DpNightmare</name>
     <titlelayout>NLIMC</titlelayout>
     <keepBorder>yes</keepBorder>
     <animateIconify>yes</animateIconify>
     <titleLayout>NLDIMC</titleLayout>
     <font place="ActiveWindow">
       <name>Ubuntu Light</name>
-      <size>10</size>
+      <size>9</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="InactiveWindow">
       <name>Ubuntu Light</name>
-      <size>10</size>
+      <size>9</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
