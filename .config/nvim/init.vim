@@ -75,6 +75,9 @@ set modeline
 syntax on
 filetype plugin indent on
 
+set splitbelow
+set splitright
+
 :tnoremap <Esc> <C-\><C-n>
 
 nnoremap <Leader><Up>    :resize +5<CR>
