@@ -21,6 +21,7 @@ Plug 'tobyS/vmustache'
 "Plug 'tobyS/pdv'
 Plug 'YaroslavMolchan/pdv'
 Plug 'arnaud-lb/vim-php-namespace'
+Plug 'ap/vim-css-color'
 Plug 'vim-vdebug/vdebug'
 call plug#end()
 
