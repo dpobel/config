@@ -631,6 +631,10 @@
       <decor>no</decor>
       <maximized>yes</maximized>
     </application>
+    <application class="Firefox" role="page-info">
+      <decor>yes</decor>
+      <maximized>no</maximized>
+    </application>
     <application class="Chrome">
       <decor>no</decor>
       <maximized>yes</maximized>
