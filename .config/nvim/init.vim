@@ -37,6 +37,13 @@ set incsearch
 set hlsearch
 set smartcase
 
+" Search results centered please
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+
 set scrolljump=5
 set sidescrolloff=5
 set scrolloff=5
