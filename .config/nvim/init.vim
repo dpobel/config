@@ -101,7 +101,6 @@ let g:grepper.dir = 'repo,cwd'
 let g:grepper.side_cmd = 'botright vnew'
 
 runtime plugin/grepper.vim
-let g:grepper.git.grepprg .= ' --untracked'
 
 let g:grepper.tools = ['git', 'git_grep_everything', 'ag']
 let g:grepper.git_grep_everything = {
