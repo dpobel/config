@@ -206,7 +206,7 @@ map <Leader><C-d> :call pdv#DocumentCurrentLine()<CR>
 let g:php_namespace_sort_after_insert = 1
 noremap <Leader>u :call PhpInsertUse()<CR>
 noremap <Leader>e :call PhpExpandClass()<CR>
-noremap <Leader>s :call PhpSortUse()<CR>
+noremap <Leader>ns :call PhpSortUse()<CR>
 
 set laststatus=2 " display airline bar all the time
 "cnoremap w!! w !sudo tee % >/dev/null
