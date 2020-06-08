@@ -78,7 +78,7 @@ set modeline
 syntax on
 filetype plugin indent on
 
-set splitbelow
+"set splitbelow
 set splitright
 
 :tnoremap <Esc> <C-\><C-n>
