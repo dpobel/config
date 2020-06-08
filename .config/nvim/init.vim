@@ -71,7 +71,7 @@ set ts=4
 set sw=4
 
 set list
-set listchars=nbsp:¬
+set listchars=tab:\ \ ,nbsp:¬
 
 set modeline
 
