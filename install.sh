@@ -76,6 +76,11 @@ CONFIG_DIR=`dirname $BASH_SOURCE[0]`
 [ ! -L ~/.config/gtk-4.0 ] && ln -r -s $CONFIG_DIR/.config/gtk-4.0 ~/.config/
 
 echo ''
+echo '# Configuring URxvt as the default terminal emulator'
+
+sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
+
+echo ''
 echo '# Configuring neovim'
 if [ ! -d ~/.config/nvim/autoload ] ; then
     mkdir -p ~/.config/nvim/autoload
