@@ -4,8 +4,7 @@ export NO_AT_BRIDGE=1
 export PATH=~/bin:$PATH
 #export OOO_FORCE_DESKTOP="gnome"
 xcompmgr -l 0 -t 0 -C &
-#/usr/lib/gnome-settings-daemon/gnome-settings-daemon
-#gnome-settings-daemon &
+gnome-screensaver &
 stalonetray --dockapp-mode simple -i 32 --slot-size 40 -p &
 sh .fehbg
 xrdb .Xdefaults &

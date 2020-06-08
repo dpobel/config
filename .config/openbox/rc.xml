@@ -173,11 +173,6 @@
         <execute>firefox</execute>
       </action>
     </keybind>
-    <keybind key="W-L">
-      <action name="ShowMenu">
-        <menu>client-list-combined-menu</menu>
-      </action>
-    </keybind>
     <keybind key="W-H">
       <action name="Execute">
         <execute>/usr/bin/google-chrome</execute>
@@ -288,6 +283,11 @@
     <keybind key="A-F4">
       <action name="Close"/>
     </keybind>
+    <keybind key="W-Tab">
+      <action name="ShowMenu">
+        <menu>client-list-combined-menu</menu>
+      </action>
+    </keybind>
     <keybind key="A-Tab">
       <action name="NextWindow">
         <raise>no</raise>
@@ -379,6 +379,14 @@
     <keybind key="XF86MonBrightnessUp">
       <action name="Execute">
         <command>xbacklight -inc 10</command>
+      </action>
+    </keybind>
+    <keybind key="W-L">
+      <action name="Execute">
+        <command>xset dpms force off</command>
+      </action>
+      <action name="Execute">
+        <command>gnome-screensaver-command -l</command>
       </action>
     </keybind>
   </keyboard>
