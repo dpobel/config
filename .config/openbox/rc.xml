@@ -20,37 +20,37 @@
     <titleLayout>NLDIMC</titleLayout>
     <font place="ActiveWindow">
       <name>Ubuntu Light</name>
-      <size>9</size>
+      <size>11</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="InactiveWindow">
       <name>Ubuntu Light</name>
-      <size>9</size>
+      <size>11</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="MenuHeader">
       <name>Ubuntu Light</name>
-      <size>9</size>
+      <size>11</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="MenuItem">
       <name>Ubuntu Light</name>
-      <size>9</size>
+      <size>11</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="ActiveOnScreenDisplay">
       <name>Ubuntu Light</name>
-      <size>14</size>
+      <size>18</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="InactiveOnScreenDisplay">
       <name>Ubuntu Light</name>
-      <size>14</size>
+      <size>18</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
