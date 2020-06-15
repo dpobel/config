@@ -12,15 +12,16 @@ Plug 'isa/vim-matchit'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mhinz/vim-grepper'
 Plug 'sheerun/vim-polyglot'
-Plug 'scrooloose/nerdcommenter'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
+Plug 'scrooloose/nerdcommenter'
 Plug 'StanAngeloff/php.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tobyS/vmustache'
 "Plug 'tobyS/pdv'
 Plug 'YaroslavMolchan/pdv'
 Plug 'arnaud-lb/vim-php-namespace'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'ap/vim-css-color'
 Plug 'vim-vdebug/vdebug'
 call plug#end()
@@ -129,6 +130,8 @@ colorscheme desertink
 
 set wildignore+=*node_modules*
 set wildignore+=*build*
+set wildignore+=*cache*
+set wildignore+=*logs*
 " set wildignore+=*vendor*
 "set wildignore+=tags
 "set wildignore+=*coverage*
@@ -136,9 +139,13 @@ set wildignore+=*build*
 let g:gutentags_modules = ['ctags', 'gtags_cscope']
 let g:gutentags_ctags_exclude_wildignore = 1
 let g:gutentags_cache_dir = "~/.cache/gutentags"
+let g:gutentags_define_advanced_commands = 1
+let g:gutentags_project_root = ['composer.json']
 
 let g:gutentags_plus_switch = 1
+let g:gutentags_plug_nomap = 1
 
+let g:ctrlp_root_markers = ['composer.json']
 let g:ctrlp_open_multiple_files = '2vjr' " open up to 2 new vertical split, jump to first and open first in current window
 let g:ctrlp_extensions = ['tag']
 if executable('ag')
