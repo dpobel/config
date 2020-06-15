@@ -1,13 +1,11 @@
 #! /bin/sh
-#
 
+EXTERNAL_OUTPUT="HDMI2"
+LAPTOP_OUTPUT="eDP1"
+CONNECTED=`xrandr | grep "$EXTERNAL_OUTPUT connected"`
 
-VGA=`xrandr | grep "VGA1 connected"`
-
-if [ "$VGA" != "" ] ; then
-    xrandr --output VGA1 --auto --left-of LVDS1
+if [ "$CONNECTED" != "" ] ; then
+    xrandr --output $EXTERNAL_OUTPUT --auto --above $LAPTOP_OUTPUT
 else
-    xrandr --output VGA1 --off --auto
+    xrandr --output $EXTERNAL_OUTPUT --off --auto
 fi
-
-killall conky && conky &

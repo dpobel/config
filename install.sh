@@ -104,4 +104,8 @@ echo ''
 echo '# Installing nvm'
 [ ! -d ~/.nvm ] && wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
+echo ''
+echo '# Installing custom scripts in ~/bin'
+[ ! -L ~/bin/xprofile ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/xprofile ~/bin/xprofile
+
 exit 0
