@@ -1,3 +1,1 @@
-/**
- * @var {{type}}{{^type}}mixed{{/type}}
- */
+/** @var {{type}}{{^type}}mixed{{/type}} */
