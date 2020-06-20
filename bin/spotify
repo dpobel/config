@@ -1,0 +1,10 @@
+#! /bin/bash
+# Raise or run Spotify if not already there
+
+wmctrl -l|grep -ic spotify > /dev/null
+
+if [ $? -eq 0 ] ; then
+    wmctrl -a Spotify
+else
+    \spotify
+fi

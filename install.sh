@@ -17,7 +17,7 @@ if [ ! -f  /etc/apt/sources.list.d/spotify.list ] ; then
 fi
 
 sudo apt update
-sudo apt install rxvt-unicode openbox openbox-gnome-session openbox-menu obconf neovim feh xcompmgr tig tdc cbatticon spotify-client stalonetray global universal-ctags blueman scrot most graphicsmagick silversearcher-ag xbacklight gnome-screensaver gimp jq
+sudo apt install rxvt-unicode openbox openbox-gnome-session openbox-menu obconf neovim feh xcompmgr tig tdc cbatticon spotify-client stalonetray global universal-ctags blueman scrot most graphicsmagick silversearcher-ag xbacklight gnome-screensaver gimp jq wmctrl
 
 echo ''
 echo '# Installing Inconsolata Nerd Font'
@@ -110,5 +110,6 @@ echo '# Installing nvm'
 echo ''
 echo '# Installing custom scripts in ~/bin'
 [ ! -L ~/bin/xprofile ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/xprofile ~/bin/xprofile
+[ ! -L ~/bin/xprofile ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/spotify ~/bin/spotify
 
 exit 0
