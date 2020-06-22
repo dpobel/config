@@ -381,6 +381,11 @@
         <command>xbacklight -inc 10</command>
       </action>
     </keybind>
+    <keybind key="XF86Display">
+      <action name="Execute">
+        <command>xprofile</command>
+      </action>
+    </keybind>
     <keybind key="W-L">
       <action name="Execute">
         <command>xset dpms force off</command>
