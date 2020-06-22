@@ -110,6 +110,6 @@ echo '# Installing nvm'
 echo ''
 echo '# Installing custom scripts in ~/bin'
 [ ! -L ~/bin/xprofile ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/xprofile ~/bin/xprofile
-[ ! -L ~/bin/xprofile ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/spotify ~/bin/spotify
+[ ! -L ~/bin/one-spotify ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/one-spotify ~/bin/one-spotify
 
 exit 0

@@ -313,7 +313,7 @@
     </keybind>
     <keybind key="W-M">
       <action name="Execute">
-        <execute>spotify</execute>
+        <execute>one-spotify</execute>
       </action>
     </keybind>
     <keybind key="XF86AudioPlay">
