@@ -1,10 +1,10 @@
 #! /bin/bash
 # Raise or run Spotify if not already there
 
-wmctrl -l|grep -ic spotify > /dev/null
+WINID=`wmctrl -x -l|grep -i spotify|head -1| cut -d ' ' -f 1`
 
-if [ $? -eq 0 ] ; then
-    wmctrl -a Spotify
+if [ ! -z "$WINID" ] ; then
+    wmctrl -i -a "$WINID"
 else
     \spotify
 fi
