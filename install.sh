@@ -17,7 +17,7 @@ if [ ! -f  /etc/apt/sources.list.d/spotify.list ] ; then
 fi
 
 sudo apt update
-sudo apt install rxvt-unicode openbox openbox-gnome-session openbox-menu obconf neovim feh xcompmgr tig tdc cbatticon spotify-client stalonetray global universal-ctags blueman scrot most graphicsmagick silversearcher-ag xbacklight gnome-screensaver gimp jq wmctrl
+sudo apt install rxvt-unicode openbox openbox-gnome-session openbox-menu obconf neovim feh xcompmgr tig tdc cbatticon spotify-client stalonetray global universal-ctags blueman scrot most graphicsmagick silversearcher-ag xbacklight gnome-screensaver gimp jq wmctrl dunst
 
 echo ''
 echo '# Installing Inconsolata Nerd Font'
@@ -66,6 +66,9 @@ CONFIG_DIR=`dirname $BASH_SOURCE[0]`
 
 
 [ ! -d ~/.config ] && mkdir ~/.config
+
+[ -d ~/.config/dunst ] && mv ~/.config/dunst ~/.config/dunst.$$
+[ ! -L ~/.config/dunst ] && ln -r -s $CONFIG_DIR/.config/dunst ~/.config/
 
 [ -d ~/.config/openbox ] && mv ~/.config/openbox ~/.config/openbox.$$
 [ ! -L ~/.config/openbox ] && ln -r -s $CONFIG_DIR/.config/openbox ~/.config/
