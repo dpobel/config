@@ -19,7 +19,7 @@ if [ $? -ne 0 ] ; then
     SPOTIFY_STATUS="⏸️"
 fi
 
-LOAD=`uptime |tr -s ' '|cut -d ' ' -f 7-`
+LOAD=`uptime |sed 's/.*load average/load average/g'`
 INFOS=$LOAD
 # TODO network ?
 
