@@ -1,0 +1,29 @@
+#! /bin/bash
+
+DATE=`date +"%A %d %B - %H:%M"`
+
+BATTERY_LAPTOP=`upower -i /org/freedesktop/UPower/devices/battery_BAT0|grep percentage|tr -s ' '|cut -d ' ' -f 3`
+
+MOUSE_DEVICE=`upower -e|grep mouse_dev`
+
+BATTERY="PC : $BATTERY_LAPTOP"
+if [ ! -z "$MOUSE_DEVICE" ] ; then
+    BATTERY_MOUSE=`upower -i $MOUSE_DEVICE|grep percentage|tr -s ' '|cut -d ' ' -f 3`
+    BATTERY="$BATTERY\nSouris : $BATTERY_MOUSE"
+fi
+# TODO find a way to retrieve Bose battery level…
+
+SPOTIFY_STATUS="▶️"
+STATUS=`dbus-send --print-reply=literal --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:PlaybackStatus|grep -i Playing`
+if [ $? -ne 0 ] ; then
+    SPOTIFY_STATUS="⏸️"
+fi
+
+LOAD=`uptime |tr -s ' '|cut -d ' ' -f 7-`
+INFOS=$LOAD
+# TODO network ?
+
+notify-send "$SPOTIFY_STATUS Spotify" "`cat ~/.last-spotify-notification`"
+notify-send "⚙️ Système" "$INFOS"
+notify-send "⚡️Batteries" "$BATTERY"
+notify-send "🗓️ $DATE"

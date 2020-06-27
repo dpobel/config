@@ -6,5 +6,6 @@ WINID=`wmctrl -x -l|grep -i spotify|head -1| cut -d ' ' -f 1`
 if [ ! -z "$WINID" ] ; then
     wmctrl -i -a "$WINID"
 else
+    rm -f ~/.last-spotify-notification
     \spotify
 fi

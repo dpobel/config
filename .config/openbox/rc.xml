@@ -346,6 +346,11 @@
         <execute>dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous</execute>
       </action>
     </keybind>
+    <keybind key="W-I">
+      <action name="Execute">
+        <execute>notify-info</execute>
+      </action>
+    </keybind>
     <keybind key="A-Up">
       <action name="Execute">
         <command>amixer -D pulse set Master 5%+ unmute</command>
