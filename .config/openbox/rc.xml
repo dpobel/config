@@ -185,17 +185,17 @@
     </keybind>
     <keybind key="Print">
       <action name="Execute">
-        <execute>scrot</execute>
+        <execute>scrot -e 'mv $f ~/tmp/'</execute>
       </action>
     </keybind>
     <keybind key="C-Print">
       <action name="Execute">
-        <execute>scrot -s</execute>
+        <execute>scrot -s -e 'mv $f ~/tmp/'</execute>
       </action>
     </keybind>
     <keybind key="A-Print">
       <action name="Execute">
-        <execute>scrot -u</execute>
+        <execute>scrot -u -e 'mv $f ~/tmp/'</execute>
       </action>
     </keybind>
     <keybind key="W-K">
