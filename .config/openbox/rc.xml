@@ -653,6 +653,7 @@
       <!-- spotify -->
       <decor>no</decor>
       <maximized>yes</maximized>
+      <desktop>4</desktop>
     </application>
     <application class="Firefox" role="page-info">
       <decor>yes</decor>
