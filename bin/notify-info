@@ -21,9 +21,23 @@ fi
 
 LOAD=`uptime |sed 's/.*load average/load average/g'`
 INFOS=$LOAD
-# TODO network ?
+
+NETWORK=""
+IFS=$'\n'
+for DEVICE in `nmcli -g DEVICE,TYPE,STATE,CON-UUID,CONNECTION device|egrep '(ethernet|wifi):connected'` ; do
+    TYPE=`echo $DEVICE|cut -d ':' -f 2`
+    UUID=`echo $DEVICE|cut -d ':' -f 4`
+    if [ "$TYPE" = "wifi" ] ; then
+        NAME=`echo $DEVICE|cut -d ':' -f 5-`
+    else
+        NAME="Ethernet"
+    fi
+    IP=`nmcli -g ip4.address connection show $UUID|sed 's#/.*##g'`
+    NETWORK="$NAME : $IP\n$NETWORK"
+done
 
 notify-send "$SPOTIFY_STATUS Spotify" "`cat ~/.last-spotify-notification`"
 notify-send "⚙️ Système" "$INFOS"
+notify-send "📡 Réseau" "$NETWORK"
 notify-send "⚡️Batteries" "$BATTERY"
 notify-send "🗓️ $DATE"
