@@ -141,6 +141,9 @@ let g:gutentags_ctags_exclude_wildignore = 1
 let g:gutentags_cache_dir = "~/.cache/gutentags"
 let g:gutentags_define_advanced_commands = 1
 let g:gutentags_project_root = ['composer.json']
+" for PHP don't add aliases (ie use of a namespace) in tag files
+" this make arnaud-lb/vim-php-namespace much easier to use
+let g:gutentags_ctags_extra_args = ['--kinds-PHP=-a']
 
 let g:gutentags_plus_switch = 1
 let g:gutentags_plug_nomap = 1
