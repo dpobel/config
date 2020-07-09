@@ -1,5 +1,17 @@
 #! /bin/bash
 
+(
+LOAD=`uptime |sed 's/.*load average/load average/g'`
+INFOS=$LOAD
+UPGRADE_NUMBER=`apt-get --just-print upgrade|grep -c Inst`
+if [ $UPGRADE_NUMBER -ne 0 ] ; then
+    INFOS="$INFOS\n❗ $UPGRADE_NUMBER mises à jour"
+else
+    INFOS="$INFOS\n✅ Pas de mise à jour"
+fi
+notify-send "⚙️ Système" "$INFOS"
+) &
+
 DATE=`date +"%A %d %B - %H:%M"`
 
 BATTERY_LAPTOP=`upower -i /org/freedesktop/UPower/devices/battery_BAT0|grep percentage|tr -s ' '|cut -d ' ' -f 3`
@@ -19,9 +31,6 @@ if [ $? -ne 0 ] ; then
     SPOTIFY_STATUS="⏸️"
 fi
 
-LOAD=`uptime |sed 's/.*load average/load average/g'`
-INFOS=$LOAD
-
 NETWORK=""
 IFS=$'\n'
 for DEVICE in `nmcli -g DEVICE,TYPE,STATE,CON-UUID,CONNECTION device|egrep '(ethernet|wifi):connected'` ; do
@@ -37,7 +46,6 @@ for DEVICE in `nmcli -g DEVICE,TYPE,STATE,CON-UUID,CONNECTION device|egrep '(eth
 done
 
 notify-send "$SPOTIFY_STATUS Spotify" "`cat ~/.last-spotify-notification`"
-notify-send "⚙️ Système" "$INFOS"
 notify-send "📡 Réseau" "$NETWORK"
 notify-send "⚡️Batteries" "$BATTERY"
 notify-send "🗓️ $DATE"
