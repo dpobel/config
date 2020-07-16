@@ -163,8 +163,8 @@ noremap <silent> <leader>d :GscopeFind g <C-R><C-W><cr>
 " find text under cursor
 noremap <silent> <Leader>f :Grepper -cword -tool git_grep_everything -noprompt<cr>
 
-"nnoremap <Leader>t :execute 'tjump' expand('<cword>')<CR>
-"nnoremap <Leader>wt :execute 'stjump' expand('<cword>')<CR>
+nnoremap <Leader>t :execute 'tjump' expand('<cword>')<CR>
+nnoremap <Leader>wt :execute 'stjump' expand('<cword>')<CR>
 
 "let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
