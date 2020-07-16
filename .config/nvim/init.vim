@@ -239,4 +239,4 @@ au BufRead,BufNewFile *.md  set ft=markdown
 "au BufRead,BufNewFile *.hbt  set ft=mustache
 
 " no line number in terminal
-au TermOpen * set nu! relativenumber!
+au TermOpen * set nonumber norelativenumber
