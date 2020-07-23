@@ -17,9 +17,10 @@ DATE=`date +"%A %d %B - %H:%M"`
 BATTERY_LAPTOP=`upower -i /org/freedesktop/UPower/devices/battery_BAT0|grep percentage|tr -s ' '|cut -d ' ' -f 3`
 
 MOUSE_DEVICE=`upower -e|grep mouse_dev`
+MOUSE_BLUETOOTH_ADDR=`bluetoothctl devices|grep MX|cut -d ' ' -f 2`
 
 BATTERY="PC : $BATTERY_LAPTOP"
-if [ ! -z "$MOUSE_DEVICE" ] ; then
+if [ ! -z "$MOUSE_BLUETOOTH_ADDR" ] && [ ! -z "$MOUSE_DEVICE" ] ; then
     BATTERY_MOUSE=`upower -i $MOUSE_DEVICE|grep percentage|tr -s ' '|cut -d ' ' -f 3`
     BATTERY="$BATTERY\nSouris : $BATTERY_MOUSE"
 fi
