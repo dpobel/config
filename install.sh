@@ -17,7 +17,7 @@ if [ ! -f  /etc/apt/sources.list.d/spotify.list ] ; then
 fi
 
 sudo apt update
-sudo apt install rxvt-unicode openbox openbox-gnome-session openbox-menu obconf neovim feh xcompmgr tig cbatticon spotify-client stalonetray global universal-ctags blueman scrot most graphicsmagick silversearcher-ag xbacklight gnome-screensaver gimp jq wmctrl dunst
+sudo apt install rxvt-unicode openbox openbox-gnome-session openbox-menu obconf neovim feh xcompmgr tig cbatticon spotify-client stalonetray global universal-ctags blueman scrot most graphicsmagick silversearcher-ag xbacklight gnome-screensaver gimp jq wmctrl dunst libbluetooth-dev
 
 # TODO integrate https://askubuntu.com/a/1060843 for xbacklight
 
@@ -112,8 +112,17 @@ echo ''
 echo '# Installing nvm'
 [ ! -d ~/.nvm ] && wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
+
+echo ''
+echo '# Installing based-connect'
+
+[ ! -d ~/dev/tools/based-connect ] && git clone git@github.com:Denton-L/based-connect.git ~/dev/tools/based-connect
+cd ~/dev/tools/based-connect
+make
+
 echo ''
 echo '# Installing custom scripts in ~/bin'
+[ ! -L ~/bin/based-connect ] && ln -r -s --suffix=".$$" -s ~/dev/tools/based-connect/based-connect ~/bin/based-connect
 [ ! -L ~/bin/xprofile ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/xprofile ~/bin/xprofile
 [ ! -L ~/bin/one-spotify ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/one-spotify ~/bin/one-spotify
 [ ! -L ~/bin/_receive-spotify-notification ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/_receive-spotify-notification ~/bin/_receive-spotify-notification

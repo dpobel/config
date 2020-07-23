@@ -15,16 +15,20 @@ notify-send "⚙️ Système" "$INFOS"
 DATE=`date +"%A %d %B - %H:%M"`
 
 BATTERY_LAPTOP=`upower -i /org/freedesktop/UPower/devices/battery_BAT0|grep percentage|tr -s ' '|cut -d ' ' -f 3`
+BATTERY="PC : $BATTERY_LAPTOP"
+
+HEADSET_BLUETOOTH_ADDR=`bluetoothctl devices|grep Bose|cut -d ' ' -f 2`
+if [ ! -z "$HEADSET_BLUETOOTH_ADDR" ] ; then
+    BATTERY_HEADSET=`based-connect -b $HEADSET_BLUETOOTH_ADDR`
+    BATTERY="$BATTERY\nCasque : $BATTERY_HEADSET%"
+fi
 
 MOUSE_DEVICE=`upower -e|grep mouse_dev`
 MOUSE_BLUETOOTH_ADDR=`bluetoothctl devices|grep MX|cut -d ' ' -f 2`
-
-BATTERY="PC : $BATTERY_LAPTOP"
 if [ ! -z "$MOUSE_BLUETOOTH_ADDR" ] && [ ! -z "$MOUSE_DEVICE" ] ; then
     BATTERY_MOUSE=`upower -i $MOUSE_DEVICE|grep percentage|tr -s ' '|cut -d ' ' -f 3`
     BATTERY="$BATTERY\nSouris : $BATTERY_MOUSE"
 fi
-# TODO find a way to retrieve Bose battery level…
 
 SPOTIFY_STATUS="▶️"
 STATUS=`dbus-send --print-reply=literal --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:PlaybackStatus|grep -i Playing`
