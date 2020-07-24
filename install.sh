@@ -63,23 +63,14 @@ CONFIG_DIR=`dirname $BASH_SOURCE[0]`
 [ ! -L ~/.gtkrc-2.0.mine ] && ln -b -r --suffix=".$$" -s $CONFIG_DIR/.gtkrc-2.0.mine ~
 
 [ ! -d ~/.themes ] && mkdir ~/.themes
-[ -d ~/.themes/DpNightmare ] && mv ~/.themes/DpNightmare ~/.themes/DpNightmare.$$
-[ ! -L ~/.themes/DpNightmare ] && ln -r -s $CONFIG_DIR/.themes/DpNightmare ~/.themes/
-
+[ ! -L ~/.themes/DpNightmare ] && mv ~/.themes/DpNightmare ~/.themes/DpNightmare.$$ && ln -r -s $CONFIG_DIR/.themes/DpNightmare ~/.themes/
 
 [ ! -d ~/.config ] && mkdir ~/.config
 
-[ -d ~/.config/dunst ] && mv ~/.config/dunst ~/.config/dunst.$$
-[ ! -L ~/.config/dunst ] && ln -r -s $CONFIG_DIR/.config/dunst ~/.config/
-
-[ -d ~/.config/openbox ] && mv ~/.config/openbox ~/.config/openbox.$$
-[ ! -L ~/.config/openbox ] && ln -r -s $CONFIG_DIR/.config/openbox ~/.config/
-
-[ -d ~/.config/gtk-3.0 ] && mv ~/.config/gtk-3.0 ~/.config/gtk-3.0.$$
-[ ! -L ~/.config/gtk-3.0 ] && ln -r -s $CONFIG_DIR/.config/gtk-3.0 ~/.config/
-
-[ -d ~/.config/gtk-4.0 ] && mv ~/.config/gtk-4.0 ~/.config/gtk-4.0.$$
-[ ! -L ~/.config/gtk-4.0 ] && ln -r -s $CONFIG_DIR/.config/gtk-4.0 ~/.config/
+[ ! -L ~/.config/dunst ] && mv ~/.config/dunst ~/.config/dunst.$$ && ln -r -s $CONFIG_DIR/.config/dunst ~/.config/
+[ ! -L ~/.config/openbox ] && mv ~/.config/openbox ~/.config/openbox.$$ && ln -r -s $CONFIG_DIR/.config/openbox ~/.config/
+[ ! -L ~/.config/gtk-3.0 ] && mv ~/.config/gtk-3.0 ~/.config/gtk-3.0.$$ && ln -r -s $CONFIG_DIR/.config/gtk-3.0 ~/.config/
+[ ! -L ~/.config/gtk-4.0 ] && mv ~/.config/gtk-4.0 ~/.config/gtk-4.0.$$ && ln -r -s $CONFIG_DIR/.config/gtk-4.0 ~/.config/
 
 git config --global core.excludesfile "$CONFIG_DIR/.config/gitignore_global"
 
@@ -93,10 +84,8 @@ echo '# Configuring neovim'
 if [ ! -d ~/.config/nvim/autoload ] ; then
     mkdir -p ~/.config/nvim/autoload
     [ ! -L ~/.config/nvim/init.vim ] && ln -b -r --suffix=".$$" -s $CONFIG_DIR/.config/nvim/init.vim ~/.config/nvim/
-    [ -d ~/.config/nvim/after ] && mv ~/.config/nvim/after ~/.config/nvim/after.$$
-    [ ! -L ~/.config/nvim/after ] && ln -r -s $CONFIG_DIR/.config/nvim/after ~/.config/nvim/
-    [ -d ~/.config/nvim/pdv_templates ] && mv ~/.config/nvim/pdv_templates ~/.config/nvim/pdv_templates.$$
-    [ ! -L ~/.config/nvim/pdv_templates ] && ln -r -s $CONFIG_DIR/.config/nvim/pdv_templates ~/.config/nvim/
+    [ ! -L ~/.config/nvim/after ] && mv ~/.config/nvim/after ~/.config/nvim/after.$$ && ln -r -s $CONFIG_DIR/.config/nvim/after ~/.config/nvim/
+    [ ! -L ~/.config/nvim/pdv_templates ] && mv ~/.config/nvim/pdv_templates ~/.config/nvim/pdv_templates.$$ && ln -r -s $CONFIG_DIR/.config/nvim/pdv_templates ~/.config/nvim/
     wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -O ~/.config/nvim/autoload/plug.vim
     nvim -c 'PlugInstall' -c 'qa!' --headless
 fi
