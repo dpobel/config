@@ -72,7 +72,8 @@ CONFIG_DIR=`dirname $BASH_SOURCE[0]`
 [ ! -L ~/.config/gtk-3.0 ] && mv ~/.config/gtk-3.0 ~/.config/gtk-3.0.$$ && ln -r -s $CONFIG_DIR/.config/gtk-3.0 ~/.config/
 [ ! -L ~/.config/gtk-4.0 ] && mv ~/.config/gtk-4.0 ~/.config/gtk-4.0.$$ && ln -r -s $CONFIG_DIR/.config/gtk-4.0 ~/.config/
 
-git config --global core.excludesfile "$CONFIG_DIR/.config/gitignore_global"
+[ ! -L ~/.config/gitignore_global ] && ln -b -r --suffix=".$$" -s $CONFIG_DIR/.config/gitignore_global ~/.config/gitignore_global
+git config --global core.excludesfile '~/.config/gitignore_global'
 
 echo ''
 echo '# Configuring URxvt as the default terminal emulator'
