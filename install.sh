@@ -67,7 +67,7 @@ CONFIG_DIR=`dirname $BASH_SOURCE[0]`
 
 [ ! -d ~/.config ] && mkdir ~/.config
 
-[ ! -L ~/.config/dunst ] && mv ~/.config/dunst ~/.config/dunst.$$ && ln -r -s $CONFIG_DIR/.config/dunst ~/.config/
+[ ! -L ~/.config/dunst ] && mv ~/.config/dunst ~/.config/dunst.$$ 2> /dev/null ; ln -r -s $CONFIG_DIR/.config/dunst ~/.config/
 [ ! -L ~/.config/openbox ] && mv ~/.config/openbox ~/.config/openbox.$$ && ln -r -s $CONFIG_DIR/.config/openbox ~/.config/
 [ ! -L ~/.config/gtk-3.0 ] && mv ~/.config/gtk-3.0 ~/.config/gtk-3.0.$$ && ln -r -s $CONFIG_DIR/.config/gtk-3.0 ~/.config/
 [ ! -L ~/.config/gtk-4.0 ] && mv ~/.config/gtk-4.0 ~/.config/gtk-4.0.$$ && ln -r -s $CONFIG_DIR/.config/gtk-4.0 ~/.config/
