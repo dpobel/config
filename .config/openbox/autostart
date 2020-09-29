@@ -15,7 +15,6 @@ cbatticon & # TODO notify
 xset b off
 
 xprofile
-which talkspirit-desktop > /dev/null && talkspirit-desktop &
 spotify &
 firefox &
 x-terminal-emulator &
