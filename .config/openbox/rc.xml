@@ -658,6 +658,10 @@
       <decor>no</decor>
       <maximized>yes</maximized>
     </application>
+    <application class="zoom">
+      <decor>no</decor>
+      <maximized>yes</maximized>
+    </application>
     <application title="*tre sans nom">
       <!-- spotify -->
       <decor>no</decor>
