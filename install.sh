@@ -63,14 +63,14 @@ CONFIG_DIR=`dirname $BASH_SOURCE[0]`
 [ ! -L ~/.gtkrc-2.0.mine ] && ln -b -r --suffix=".$$" -s $CONFIG_DIR/.gtkrc-2.0.mine ~
 
 [ ! -d ~/.themes ] && mkdir ~/.themes
-[ ! -L ~/.themes/DpNightmare ] && mv ~/.themes/DpNightmare ~/.themes/DpNightmare.$$ && ln -r -s $CONFIG_DIR/.themes/DpNightmare ~/.themes/
+[ ! -L ~/.themes/DpNightmare ] && mv ~/.themes/DpNightmare ~/.themes/DpNightmare.$$ 2> /dev/null ; ln -r -s $CONFIG_DIR/.themes/DpNightmare ~/.themes/
 
 [ ! -d ~/.config ] && mkdir ~/.config
 
 [ ! -L ~/.config/dunst ] && mv ~/.config/dunst ~/.config/dunst.$$ 2> /dev/null ; ln -r -s $CONFIG_DIR/.config/dunst ~/.config/
-[ ! -L ~/.config/openbox ] && mv ~/.config/openbox ~/.config/openbox.$$ && ln -r -s $CONFIG_DIR/.config/openbox ~/.config/
-[ ! -L ~/.config/gtk-3.0 ] && mv ~/.config/gtk-3.0 ~/.config/gtk-3.0.$$ && ln -r -s $CONFIG_DIR/.config/gtk-3.0 ~/.config/
-[ ! -L ~/.config/gtk-4.0 ] && mv ~/.config/gtk-4.0 ~/.config/gtk-4.0.$$ && ln -r -s $CONFIG_DIR/.config/gtk-4.0 ~/.config/
+[ ! -L ~/.config/openbox ] && mv ~/.config/openbox ~/.config/openbox.$$ 2> /dev/null ; ln -r -s $CONFIG_DIR/.config/openbox ~/.config/
+[ ! -L ~/.config/gtk-3.0 ] && mv ~/.config/gtk-3.0 ~/.config/gtk-3.0.$$ 2> /dev/null ; ln -r -s $CONFIG_DIR/.config/gtk-3.0 ~/.config/
+[ ! -L ~/.config/gtk-4.0 ] && mv ~/.config/gtk-4.0 ~/.config/gtk-4.0.$$ 2> /dev/null ; ln -r -s $CONFIG_DIR/.config/gtk-4.0 ~/.config/
 
 [ ! -L ~/.config/gitignore_global ] && ln -b -r --suffix=".$$" -s $CONFIG_DIR/.config/gitignore_global ~/.config/gitignore_global
 git config --global core.excludesfile '~/.config/gitignore_global'
