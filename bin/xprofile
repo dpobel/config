@@ -1,7 +1,7 @@
 #! /bin/sh
 
-EXTERNAL_OUTPUT="VGA-1"
-LAPTOP_OUTPUT="LVDS-1"
+EXTERNAL_OUTPUT="HDMI-2"
+LAPTOP_OUTPUT="eDP-1"
 CONNECTED=`xrandr | grep "$EXTERNAL_OUTPUT connected"`
 
 if [ "$CONNECTED" != "" ] ; then
