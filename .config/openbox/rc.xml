@@ -388,7 +388,7 @@
     </keybind>
     <keybind key="XF86Display">
       <action name="Execute">
-        <command>xprofile</command>
+        <command>sh -c 'xprofile &amp;&amp; openbox --restart'</command>
       </action>
     </keybind>
     <keybind key="W-L">
