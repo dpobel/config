@@ -1,5 +1,5 @@
 URxvt*geometry: 120x40
-URxvt*font: xft:Inconsolata Nerd Font Mono:pixelsize=20
+URxvt*font: xft:Inconsolata Nerd Font Mono:pixelsize=18
 URxvt*letterSpace: -1
 
 URxvt*saveLines: 10000
