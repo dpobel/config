@@ -672,9 +672,6 @@
       <decor>yes</decor>
       <maximized>no</maximized>
     </application>
-    <application class="talkspirit">
-      <maximized>yes</maximized>
-    </application>
     <application class="Chrome">
       <decor>no</decor>
       <maximized>yes</maximized>
