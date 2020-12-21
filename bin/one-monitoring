@@ -1,0 +1,10 @@
+#! /bin/bash
+# Raise or run local monitoring if not already there
+
+WINID=`wmctrl -x -l|grep -i Monitoring.URxvt|head -1| cut -d ' ' -f 1`
+
+if [ ! -z "$WINID" ] ; then
+    wmctrl -i -a "$WINID"
+else
+    urxvt -name Monitoring -e tmux new-session 'htop' \; split-window -h 'bwm-ng' \; split-window 'gping pobel.fr' &
+fi

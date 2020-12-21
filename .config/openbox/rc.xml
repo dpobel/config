@@ -311,6 +311,11 @@
         <menu>root-menu</menu>
       </action>
     </keybind>
+    <keybind key="W-R">
+      <action name="Execute">
+        <execute>one-monitoring</execute>
+      </action>
+    </keybind>
     <keybind key="W-M">
       <action name="Execute">
         <execute>one-spotify</execute>
