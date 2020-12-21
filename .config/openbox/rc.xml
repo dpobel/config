@@ -679,5 +679,14 @@
     <application class="URxvt">
       <decor>no</decor>
     </application>
+    <application name="Monitoring">
+      <decor>no</decor>
+      <maximized>yes</maximized>
+      <desktop>2</desktop>
+      <focus>no</focus>
+      <position force="yes">
+        <monitor>1</monitor>
+      </position>
+    </application>
   </applications>
 </openbox_config>

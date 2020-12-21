@@ -16,8 +16,14 @@ if [ ! -f  /etc/apt/sources.list.d/spotify.list ] ; then
     echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 fi
 
+if [ ! -f  /etc/apt/sources.list.d/azlux.list ] ; then
+    # gping
+    echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
+    curl -sS https://azlux.fr/repo.gpg.key | sudo apt-key add -
+fi
+
 sudo apt update
-sudo apt install rxvt-unicode openbox openbox-gnome-session openbox-menu obconf neovim feh xcompmgr tig cbatticon spotify-client stalonetray global universal-ctags blueman scrot most graphicsmagick silversearcher-ag xbacklight gnome-screensaver gimp jq wmctrl dunst libbluetooth-dev build-essential
+sudo apt install rxvt-unicode openbox openbox-gnome-session openbox-menu obconf neovim feh xcompmgr tig cbatticon spotify-client stalonetray global universal-ctags blueman scrot most graphicsmagick silversearcher-ag xbacklight gnome-screensaver gimp jq wmctrl dunst libbluetooth-dev build-essential lm-sensors tmux bwm-ng htop gping
 
 # TODO integrate https://askubuntu.com/a/1060843 for xbacklight
 

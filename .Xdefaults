@@ -17,6 +17,7 @@ URxvt.iso14755_52: off
 ! put it in ~/.urxvt/
 URxvt.perl-lib: .urxvt/
 URxvt.perl-ext-common: default,matcher,tabbedex,resize-font,-tabbed
+Monitoring.perl-ext-common:
 
 ! Launch firefox with the a left click on a URL
 URxvt.url-launcher: /usr/bin/firefox
@@ -78,6 +79,7 @@ URxvt*foreground: #ffffff
 ! True transparency with shading to stay readable
 URxvt*depth: 32
 URxvt*background: rgba:0000/0000/0000/dddd
+Monitoring*background: rgba:0000/0000/0000/9999
 
 ! Fade the terminal by 40% when it looses focus
 URxvt*fading: 40

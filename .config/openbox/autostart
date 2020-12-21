@@ -26,5 +26,6 @@ slack &
 
 notify-info &
 
+urxvt -name Monitoring -e tmux new-session 'htop' \; split-window -h 'bwm-ng' \; split-window 'gping pobel.fr' &
 
 env > ~/.env.log
