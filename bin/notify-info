@@ -10,7 +10,7 @@ else
     INFOS="$INFOS\n✅ Pas de mise à jour"
 fi
 INFOS="$INFOS\n🌞 `brightness current`"
-notify-send "⚙️ Système" "$INFOS"
+notify-send "⚙️ Système" "$INFOS"  -h string:x-canonical-private-synchronous:system
 ) &
 
 DATE=`date +"%A %d %B - %H:%M"`
@@ -54,7 +54,7 @@ for DEVICE in `nmcli -g DEVICE,TYPE,STATE,CON-UUID,CONNECTION device|egrep '(eth
     NETWORK="$NAME : $IP\n$NETWORK"
 done
 
-notify-send "$SPOTIFY_STATUS Spotify" "`cat ~/.last-spotify-notification`"
-notify-send "📡 Réseau" "$NETWORK"
-notify-send "⚡️Batteries" "$BATTERY"
-notify-send "🗓️ $DATE"
+notify-send "$SPOTIFY_STATUS Spotify" "`cat ~/.last-spotify-notification`"  -h string:x-canonical-private-synchronous:spotify
+notify-send "📡 Réseau" "$NETWORK" -h string:x-canonical-private-synchronous:network
+notify-send "⚡️Batteries" "$BATTERY" -h string:x-canonical-private-synchronous:network
+notify-send "🗓️ $DATE" -h string:x-canonical-private-synchronous:datetime
