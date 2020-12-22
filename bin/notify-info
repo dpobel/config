@@ -9,6 +9,7 @@ if [ $UPGRADE_NUMBER -ne 0 ] ; then
 else
     INFOS="$INFOS\n✅ Pas de mise à jour"
 fi
+INFOS="$INFOS\n🌞 `brightness current`"
 notify-send "⚙️ Système" "$INFOS"
 ) &
 

@@ -1,0 +1,23 @@
+#! /bin/sh
+
+[ -z "$1" ] && exit 1
+
+CURRENT=`xrandr --current --verbose|grep -m 1 -i brightness|cut -d ' ' -f 2`
+
+[ "$1" = "current" ] && echo $CURRENT && exit 0
+
+if [ "$1" = "up" ] ; then
+    SIGN="+"
+else
+    SIGN="-"
+fi
+STEP="0.10"
+NEW=`echo "current=$CURRENT;current$SIGN=$STEP;if(current<0)print 0 else print current"|bc`
+
+OPTIONS=""
+for MONITOR in `xrandr --current | grep ' connected ' | cut -d ' ' -f 1` ; do
+    OPTIONS="--output $MONITOR --brightness $NEW"
+done
+xrandr $OPTIONS
+notify-send "🌞 $NEW" -h string:x-canonical-private-synchronous:brightness
+
