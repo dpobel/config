@@ -56,5 +56,5 @@ done
 
 notify-send "$SPOTIFY_STATUS Spotify" "`cat ~/.last-spotify-notification`"  -h string:x-canonical-private-synchronous:spotify
 notify-send "📡 Réseau" "$NETWORK" -h string:x-canonical-private-synchronous:network
-notify-send "⚡️Batteries" "$BATTERY" -h string:x-canonical-private-synchronous:network
+notify-send "⚡️Batteries" "$BATTERY" -h string:x-canonical-private-synchronous:batteries
 notify-send "🗓️ $DATE" -h string:x-canonical-private-synchronous:datetime
