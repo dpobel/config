@@ -663,7 +663,7 @@
       <decor>no</decor>
       <maximized>yes</maximized>
     </application>
-    <application class="zoom">
+    <application class="zoom" title="Zoom">
       <decor>no</decor>
       <maximized>yes</maximized>
     </application>
