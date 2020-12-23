@@ -16,7 +16,7 @@ NEW=`echo "current=$CURRENT;current$SIGN=$STEP;if(current<0)print 0 else print c
 
 OPTIONS=""
 for MONITOR in `xrandr --current | grep ' connected ' | cut -d ' ' -f 1` ; do
-    OPTIONS="--output $MONITOR --brightness $NEW"
+    OPTIONS="--output $MONITOR --brightness $NEW $OPTIONS"
 done
 xrandr $OPTIONS
 notify-send "🌞 $NEW" -h string:x-canonical-private-synchronous:brightness
