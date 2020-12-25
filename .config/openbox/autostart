@@ -2,12 +2,11 @@
 
 export NO_AT_BRIDGE=1
 export PATH=~/bin:$PATH
-#export OOO_FORCE_DESKTOP="gnome"
-xcompmgr -l 0 -t 0 -C &
+sh .fehbg
+unagi &
 gnome-screensaver &
 dunst &
 stalonetray --dockapp-mode simple -i 32 --slot-size 40 &
-sh .fehbg
 xrdb .Xdefaults &
 cbatticon & # TODO notify
 
