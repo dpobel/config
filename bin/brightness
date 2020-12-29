@@ -19,5 +19,7 @@ for MONITOR in `xrandr --current | grep ' connected ' | cut -d ' ' -f 1` ; do
     OPTIONS="--output $MONITOR --brightness $NEW $OPTIONS"
 done
 xrandr $OPTIONS
-notify-send "🌞 $NEW" -h string:x-canonical-private-synchronous:brightness
+
+INT_LEVEL=`echo "scale=0;$NEW*10/1"|bc`
+notify-send "🌞 ${INT_LEVEL}0% ｜`seq -s '' 0 $INT_LEVEL|sed s/[0-9]/＝/g`＞" -h string:x-canonical-private-synchronous:brightness
 
