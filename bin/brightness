@@ -4,7 +4,11 @@
 
 CURRENT=`xrandr --current --verbose|grep -m 1 -i brightness|cut -d ' ' -f 2`
 
-[ "$1" = "current" ] && echo $CURRENT && exit 0
+if [ "$1" = "current" ] ; then
+    PERCENTAGE=`echo "scale=0;$CURRENT*100/1"|bc`
+    echo "${PERCENTAGE}%"
+    exit 0;
+fi
 
 if [ "$1" = "up" ] ; then
     SIGN="+"
