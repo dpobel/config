@@ -201,6 +201,7 @@ let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   'php': ['trim_whitespace', 'php_cs_fixer'],
 \   'javascript': ['trim_whitespace', 'prettier', 'eslint'],
+\   'graphql': ['trim_whitespace', 'prettier', 'eslint'],
 \   'yaml': ['trim_whitespace'],
 \   'markdown': ['trim_whitespace']
 \}
