@@ -316,6 +316,11 @@
         <execute>one-monitoring</execute>
       </action>
     </keybind>
+    <keybind key="W-S">
+      <action name="Execute">
+        <execute>one-slack</execute>
+      </action>
+    </keybind>
     <keybind key="W-M">
       <action name="Execute">
         <execute>one-spotify</execute>
