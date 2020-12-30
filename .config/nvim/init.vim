@@ -152,7 +152,7 @@ let g:gutentags_project_root = ['composer.json']
 " for PHP don't add aliases (ie use of a namespace) in tag files
 " this make arnaud-lb/vim-php-namespace much easier to use
 let g:gutentags_ctags_extra_args = ['--kinds-PHP=-a']
-let g:gutentags_exclude_filetypes = ['gitcommit', 'gitrebase']
+let g:gutentags_exclude_filetypes = ['gitcommit', 'gitrebase', 'diff']
 
 let g:gutentags_plus_switch = 1
 let g:gutentags_plug_nomap = 1
