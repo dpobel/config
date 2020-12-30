@@ -24,6 +24,7 @@ Plug 'arnaud-lb/vim-php-namespace'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ap/vim-css-color'
 Plug 'vim-vdebug/vdebug'
+Plug 'simnalamburt/vim-mundo'
 call plug#end()
 
 set exrc   " read .nvimrc in directory where nvim is started
@@ -74,6 +75,10 @@ set sw=4
 set list
 set listchars=tab:\ \ ,nbsp:¬
 
+set undofile
+set undodir=~/tmp/.neovim/undo
+set undolevels=10000
+
 set modeline
 
 syntax on
@@ -88,6 +93,9 @@ nnoremap <Leader><Up>    :resize +5<CR>
 nnoremap <Leader><Down>  :resize -5<CR>
 nnoremap <Leader><Left>  :vertical resize -5<CR>
 nnoremap <Leader><Right> :vertical resize +5<CR>
+
+nnoremap <F4> :MundoToggle<CR>
+let g:mundo_right = 1
 
 map <F2> :NERDTreeToggle<CR>
 map <Leader><F2> :NERDTreeFind<CR>
