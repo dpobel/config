@@ -25,6 +25,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'ap/vim-css-color'
 Plug 'vim-vdebug/vdebug'
 Plug 'simnalamburt/vim-mundo'
+" need to be loaded after the plugins it extend
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 set exrc   " read .nvimrc in directory where nvim is started
