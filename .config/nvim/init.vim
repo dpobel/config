@@ -212,6 +212,8 @@ let g:ale_fixers = {
 \   'php': ['trim_whitespace', 'php_cs_fixer'],
 \   'javascript': ['trim_whitespace', 'prettier', 'eslint'],
 \   'graphql': ['trim_whitespace', 'prettier', 'eslint'],
+\   'scss': ['trim_whitespace', 'prettier', 'eslint'],
+\   'json': ['trim_whitespace', 'prettier'],
 \   'yaml': ['trim_whitespace'],
 \   'markdown': ['trim_whitespace']
 \}
