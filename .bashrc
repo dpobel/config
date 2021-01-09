@@ -84,6 +84,7 @@ alias cd..="cd .."
 alias grep="grep --color"
 alias gt="git"
 alias got="git"
+alias fclogs="cd ~/dev/front-commerce/logs ; tail -f server.log | jq ."
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
