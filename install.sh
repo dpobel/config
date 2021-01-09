@@ -23,7 +23,7 @@ if [ ! -f  /etc/apt/sources.list.d/azlux.list ] ; then
 fi
 
 sudo apt update
-sudo apt install rxvt-unicode openbox openbox-gnome-session openbox-menu obconf neovim feh uniga tig cbatticon spotify-client stalonetray global universal-ctags blueman scrot most graphicsmagick silversearcher-ag gnome-screensaver gimp jq wmctrl dunst libbluetooth-dev build-essential lm-sensors tmux bwm-ng htop gping
+sudo apt install rxvt-unicode openbox openbox-gnome-session openbox-menu obconf neovim feh compton tig cbatticon spotify-client stalonetray global universal-ctags blueman scrot most graphicsmagick silversearcher-ag gnome-screensaver gimp jq wmctrl dunst libbluetooth-dev build-essential lm-sensors tmux bwm-ng htop gping
 
 echo ''
 echo '# Installing Inconsolata Nerd Font'
@@ -119,6 +119,7 @@ echo ''
 echo '# Installing custom scripts in ~/bin'
 [ ! -L ~/bin/based-connect ] && ln -r -s --suffix=".$$" ~/dev/tools/based-connect/based-connect ~/bin/based-connect
 [ ! -L ~/bin/xprofile ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/xprofile ~/bin/xprofile
+[ ! -L ~/bin/compositor ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/compositor ~/bin/compositor
 [ ! -L ~/bin/brightness ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/brightness ~/bin/brightness
 [ ! -L ~/bin/one-monitoring ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/one-monitoring ~/bin/one-monitoring
 [ ! -L ~/bin/one-slack ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/one-slack ~/bin/one-slack

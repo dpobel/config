@@ -408,7 +408,7 @@
     </keybind>
     <keybind key="XF86Display">
       <action name="Execute">
-        <command>sh -c 'xprofile &amp;&amp; openbox --restart'</command>
+        <command>sh -c 'xprofile &amp;&amp; openbox --restart &amp;&amp; compositor'</command>
       </action>
     </keybind>
     <keybind key="W-L">

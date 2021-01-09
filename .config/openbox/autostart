@@ -3,7 +3,6 @@
 export NO_AT_BRIDGE=1
 export PATH=~/bin:$PATH
 sh .fehbg
-unagi &
 gnome-screensaver &
 dunst &
 stalonetray --dockapp-mode simple -i 32 --slot-size 40 &
@@ -26,5 +25,6 @@ slack &
 notify-info &
 
 one-monitoring &
+compositor &
 
 env > ~/.env.log

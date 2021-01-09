@@ -1,0 +1,4 @@
+#! /bin/bash
+
+killall compton
+compton -m 0.8 -C &
