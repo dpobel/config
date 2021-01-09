@@ -1,6 +1,6 @@
 #! /bin/sh
 
-EXTERNAL_OUTPUT="HDMI-2"
+EXTERNAL_OUTPUT="DP-2-1"
 LAPTOP_OUTPUT="eDP-1"
 CONNECTED=`xrandr | grep "$EXTERNAL_OUTPUT connected"`
 
