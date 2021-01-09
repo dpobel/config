@@ -177,11 +177,6 @@ noremap <silent> <Leader>f :Grepper -cword -tool git_grep_everything -noprompt<c
 nnoremap <Leader>t :execute 'tjump' expand('<cword>')<CR>
 nnoremap <Leader>wt :execute 'stjump' expand('<cword>')<CR>
 
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
