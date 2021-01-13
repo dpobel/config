@@ -148,8 +148,8 @@ dmenu = /usr/bin/dmenu -p dunst:
 browser = /usr/bin/firefox -new-tab
 
 # Align icons left/right/off
-icon_position = off
-max_icon_size = 80
+icon_position = left
+max_icon_size = 64
 
 # Paths to default icons.
 icon_path = /usr/share/icons/Yaru/48x48/actions:/usr/share/icons/Yaru/48x48/apps:/usr/share/icons/Yaru/48x48/categories:/usr/share/icons/Yaru/48x48/devices:/usr/share/icons/Yaru/48x48/emblems:/usr/share/icons/Yaru/48x48/legacy:/usr/share/icons/Yaru/48x48/mimetypes:/usr/share/icons/Yaru/48x48/places:/usr/share/icons/Yaru/48x48/status
@@ -228,6 +228,18 @@ timeout = 8
     appname = Spotify
     script = _receive-spotify-notification
     format = ""
+
+[run-zoom]
+    appname = Firefox
+    body = "*https://zoom.us*"
+    script = _run-zoom
+    format = ""
+    new_icon = "/usr/share/pixmaps/Zoom.png"
+    urgency = "critical"
+
+[no-icon]
+    appname = "noicon"
+    new_icon = ""
 
 #[espeak]
 #    summary = "*"

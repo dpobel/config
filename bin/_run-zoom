@@ -1,0 +1,17 @@
+#! /bin/sh
+
+# APPNAME=$1
+SUMMARY=$2
+ICON=$4
+URGENCY=$5
+BODY=$3
+# BODY=11:42 – 11:57 https://zoom.us/j/<id>?pwd=<password>
+
+URL=`echo $BODY | sed -e 's@.*\(https://zoom.us/.*\)@\1@g'`
+if [ ! -z "$URL" ] ; then
+    PARAMS=`echo $URL|sed s@.*/j/@@g|tr '?' '&'`
+    xdg-open "zoommtg://zoom.us/join?action=join&confno=$PARAMS"
+    BODY="$BODY\nOpening Zoom to not miss it…"
+fi
+
+notify-send -i $ICON -u $URGENCY "$SUMMARY" "$BODY"

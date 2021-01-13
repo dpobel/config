@@ -126,5 +126,6 @@ echo '# Installing custom scripts in ~/bin'
 [ ! -L ~/bin/notify-info ] && ln -r -s --suffix=".$$" $CONFIG_DIR/bin/notify-info ~/bin/notify-info
 [ ! -L ~/bin/one-spotify ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/one-spotify ~/bin/one-spotify
 [ ! -L ~/bin/_receive-spotify-notification ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/_receive-spotify-notification ~/bin/_receive-spotify-notification
+[ ! -L ~/bin/_run-zoom ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/_run-zoom ~/bin/_run-zoom
 
 exit 0
