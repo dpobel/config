@@ -10,7 +10,7 @@ else
     INFOS="$INFOS\n✅ Pas de mise à jour"
 fi
 INFOS="$INFOS\n🌞 `brightness current`"
-notify-send -a "noicon" "⚙️ Système" "$INFOS"  -h string:x-canonical-private-synchronous:system
+notify-send -i gnome-control-center "Système" "$INFOS"  -h string:x-canonical-private-synchronous:system
 ) &
 
 DATE=`date +"%A %d %B - %H:%M"`
@@ -34,10 +34,10 @@ if [ ! -z "$MOUSE_BLUETOOTH_ADDR" ] && [ ! -z "$MOUSE_DEVICE" ] ; then
     BATTERY="$BATTERY\nSouris : $BATTERY_MOUSE"
 fi
 
-SPOTIFY_STATUS="▶️"
+SPOTIFY_STATUS="▶"
 STATUS=`dbus-send --print-reply=literal --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:PlaybackStatus|grep -i Playing`
 if [ $? -ne 0 ] ; then
-    SPOTIFY_STATUS="⏸️"
+    SPOTIFY_STATUS="■"
 fi
 
 NETWORK=""
@@ -54,7 +54,7 @@ for DEVICE in `nmcli -g DEVICE,TYPE,STATE,CON-UUID,CONNECTION device|egrep '(eth
     NETWORK="$NAME : $IP\n$NETWORK"
 done
 
-notify-send -a "noicon" "$SPOTIFY_STATUS Spotify" "`cat ~/.last-spotify-notification`"  -h string:x-canonical-private-synchronous:spotify
-notify-send -a "noicon" "📡 Réseau" "$NETWORK" -h string:x-canonical-private-synchronous:network
-notify-send -a "noicon" "⚡️Batteries" "$BATTERY" -h string:x-canonical-private-synchronous:batteries
-notify-send -a "noicon" "🗓️ $DATE" -h string:x-canonical-private-synchronous:datetime
+notify-send -i /usr/share/spotify/icons/spotify-linux-48.png "$SPOTIFY_STATUS Spotify" "`cat ~/.last-spotify-notification`"  -h string:x-canonical-private-synchronous:spotify
+notify-send -i preferences-system-network "Réseau" "$NETWORK" -h string:x-canonical-private-synchronous:network
+notify-send -i preferences-system-power "Batteries" "$BATTERY" -h string:x-canonical-private-synchronous:batteries
+notify-send -i gnome-clocks "$DATE" -h string:x-canonical-private-synchronous:datetime
