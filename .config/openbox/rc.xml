@@ -685,7 +685,12 @@
     </application>
     <application class="zoom" title="Zoom">
       <decor>no</decor>
-      <maximized>yes</maximized>
+      <maximized>no</maximized>
+      <layer>above</layer>
+      <size>
+          <width>10%</width>
+          <height>10%</height>
+      </size>
     </application>
     <application title="*tre sans nom">
       <!-- spotify -->
