@@ -311,6 +311,11 @@
         <menu>root-menu</menu>
       </action>
     </keybind>
+    <keybind key="A-F2">
+      <action name="Execute">
+        <execute>dmenu_run -p "Lancer :" -l 10 -fn 'xft:Inconsolata Nerd Font Mono:pixelsize=22'</execute>
+      </action>
+    </keybind>
     <keybind key="W-R">
       <action name="Execute">
         <execute>one-monitoring</execute>
