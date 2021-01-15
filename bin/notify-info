@@ -1,7 +1,9 @@
 #! /bin/bash
 
-(
 LOAD=`uptime |sed 's/.*load average://g'`
+BRIGHTNESS=`brightness current`
+
+(
 INFOS="📊 $LOAD"
 UPGRADE_NUMBER=`apt-get --just-print upgrade|grep -c Inst`
 if [ $UPGRADE_NUMBER -ne 0 ] ; then
@@ -9,9 +11,14 @@ if [ $UPGRADE_NUMBER -ne 0 ] ; then
 else
     INFOS="$INFOS\n✅ Pas de mise à jour"
 fi
-INFOS="$INFOS\n🌞 `brightness current`"
+INFOS="$INFOS\n🌞 $BRIGHTNESS"
 notify-send -i gnome-control-center "Système" "$INFOS"  -h string:x-canonical-private-synchronous:system
 ) &
+
+INFOS="📊 $LOAD"
+INFOS="$INFOS\n⏳ Vérification des MAJ…"
+INFOS="$INFOS\n🌞 $BRIGHTNESS"
+notify-send -i gnome-control-center "Système" "$INFOS"  -h string:x-canonical-private-synchronous:system
 
 DATE=`date +"%A %d %B - %H:%M"`
 
