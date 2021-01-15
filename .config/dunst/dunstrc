@@ -238,7 +238,7 @@ timeout = 8
     new_icon = "preferences-system-network"
 
 [slack]
-    appname = *slack*
+    appname = Slack
     new_icon = /usr/share/pixmaps/slack.png
 
 [run-zoom]
