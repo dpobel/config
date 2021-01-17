@@ -692,8 +692,8 @@
           <height>10%</height>
       </size>
     </application>
-    <application title="*tre sans nom">
-      <!-- spotify -->
+    <application title="*tre sans nom" role="">
+      <!-- spotify, see https://community.spotify.com/t5/Desktop-Linux/WM-CLASS-window-property-on-Linux/td-p/1247042 -->
       <decor>no</decor>
       <maximized>yes</maximized>
       <desktop>4</desktop>
