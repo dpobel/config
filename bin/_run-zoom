@@ -10,8 +10,8 @@ BODY=$3
 URL=`echo $BODY | sed -e 's@.*\(https://zoom.us/.*\)@\1@g'`
 if [ ! -z "$URL" ] ; then
     PARAMS=`echo $URL|sed s@.*/j/@@g|tr '?' '&'`
-    xdg-open "zoommtg://zoom.us/join?action=join&confno=$PARAMS"
-    BODY="$BODY\nOpening Zoom to not miss it…"
+    xdg-open "zoommtg://zoom.us/join?action=join&confno=$PARAMS" &
+    BODY="Running Zoom"
 fi
 
 notify-send -i $ICON -u $URGENCY "$SUMMARY" "$BODY"
