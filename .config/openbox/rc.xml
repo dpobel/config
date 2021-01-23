@@ -175,7 +175,7 @@
     </keybind>
     <keybind key="W-H">
       <action name="Execute">
-        <execute>/usr/bin/google-chrome</execute>
+        <execute>google-chrome --auto-open-devtools-for-tabs</execute>
       </action>
     </keybind>
     <keybind key="W-T">
