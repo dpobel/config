@@ -1,0 +1,16 @@
+#! /bin/sh
+
+# APPNAME=$1
+SUMMARY=$2
+ICON=$4
+URGENCY=$5
+BODY=$3
+# BODY=11:42 – 11:57 https://meet.google.com
+
+URL=`echo $BODY | sed -e 's@.*\(https://.*\)@\1@g'`
+if [ ! -z "$URL" ] ; then
+    xdg-open "$URL" &
+    BODY="Opening $URL"
+fi
+
+notify-send -i $ICON -u $URGENCY "$SUMMARY" "$BODY"

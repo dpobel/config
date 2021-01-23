@@ -253,6 +253,15 @@ timeout = 8
     new_icon = "/usr/share/pixmaps/Zoom.png"
     urgency = "critical"
 
+[open-google-meet]
+    appname = Firefox
+    body = "*https://meet.google.com*"
+    script = _open-notification-url
+    format = ""
+    new_icon = ~/.local/icons/google-meet.png
+    urgency = "critical"
+
+
 #[espeak]
 #    summary = "*"
 #    script = dunst_espeak.sh

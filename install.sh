@@ -80,6 +80,12 @@ CONFIG_DIR=`dirname $BASH_SOURCE[0]`
 git config --global core.excludesfile '~/.config/gitignore_global'
 
 echo ''
+echo '# Installing icons'
+
+[ ! -d ~/.local ] && mkdir ~/.local
+[ ! -L ~/.local/icons ] && mv ~/.local/icons ~/.local/icons.$$ 2> /dev/null ; ln -r -s $CONFIG_DIR/.local/icons ~/.local/
+
+echo ''
 echo '# Configuring URxvt as the default terminal emulator'
 
 sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
@@ -127,5 +133,6 @@ echo '# Installing custom scripts in ~/bin'
 [ ! -L ~/bin/one-spotify ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/one-spotify ~/bin/one-spotify
 [ ! -L ~/bin/_receive-spotify-notification ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/_receive-spotify-notification ~/bin/_receive-spotify-notification
 [ ! -L ~/bin/_run-zoom ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/_run-zoom ~/bin/_run-zoom
+[ ! -L ~/bin/_open-notification-url ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/_open-notification-url ~/bin/_open-notification-url
 
 exit 0
