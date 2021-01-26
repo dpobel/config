@@ -25,6 +25,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'ap/vim-css-color'
 Plug 'vim-vdebug/vdebug'
 Plug 'simnalamburt/vim-mundo'
+Plug 'mhinz/vim-startify'
 " need to be loaded after the plugins it extend
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
@@ -36,6 +37,26 @@ let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDCommentEmptyLines = 0
+
+let g:startify_change_to_dir = 0
+let g:startify_update_oldfiles = 1
+
+function! s:gitModifiedUntracked()
+    let files = systemlist('git ls-files -m -o --exclude-standard 2>/dev/null')
+    return map(files, "{'line': v:val, 'path': v:val}")
+endfunction
+
+let g:startify_lists = [
+        \ { 'type': 'sessions',  'header': ['    Sessions']       },
+        \ { 'type': 'dir',       'header': ['    MRU '. getcwd()] },
+        \ { 'type': function('s:gitModifiedUntracked'),  'header': ['    git untracked and modified']},
+        \ ]
+let g:startify_session_sort = 1
+let g:startify_session_before_save = [
+        \ 'echo "Cleaning up before saving…"',
+        \ 'silent! NERDTreeClose'
+        \ ]
+let g:startify_session_persistence = 1
 
 set incsearch
 set hlsearch
