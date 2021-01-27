@@ -687,6 +687,7 @@
       <decor>no</decor>
       <maximized>no</maximized>
       <layer>above</layer>
+      <desktop>all</desktop>
       <size>
           <width>10%</width>
           <height>10%</height>
