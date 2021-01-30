@@ -6,5 +6,5 @@ WINID=`wmctrl -x -l|grep -i Monitoring.URxvt|head -1| cut -d ' ' -f 1`
 if [ ! -z "$WINID" ] ; then
     wmctrl -i -a "$WINID"
 else
-    urxvt -name Monitoring -title Montoring -e tmux new-session 'htop' \; split-window -h 'bwm-ng' \; split-window 'gping -n 1 -b 60 pobel.fr' &
+    urxvt -name Monitoring -title Monitoring -e tmux new-session 'htop' \; split-window -h 'bwm-ng' \; split-window 'gping -n 1 -b 60 pobel.fr' &
 fi
