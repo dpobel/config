@@ -22,15 +22,39 @@ notify-send -i gnome-control-center "Système" "$INFOS"  -h string:x-canonical-p
 
 DATE=`date +"%A %d %B - %H:%M"`
 
-BATTERY_LAPTOP=`upower -i /org/freedesktop/UPower/devices/battery_BAT0|grep percentage|tr -s ' '|cut -d ' ' -f 3`
-BATTERY="💻 $BATTERY_LAPTOP"
+
+# 3 possible states:
+# discharging
+# charging
+# 100% and plugged in
+ACPI_RESULT=`acpi -b`
+BATTERY_LEVEL=`echo $ACPI_RESULT|cut -d ',' -f 2|tr -s ' '`
+
+echo $ACPI_RESULT | grep " Discharging" 2>&1 > /dev/null
+DISCHARGING=$?
+echo $ACPI_RESULT | grep " Charging" 2>&1 > /dev/null
+CHARGING=$?
+
+BATTERY_LAPTOP="$BATTERY_LEVEL"
+if [ $DISCHARGING -eq 0 ] ; then
+    REMAINING_TIME=`echo $ACPI_RESULT|cut -d ',' -f 3|cut -d ' ' -f 2`
+    BATTERY_LAPTOP="$BATTERY_LAPTOP [🔻 $REMAINING_TIME]"
+else
+    if [ $CHARGING -eq 0 ] ; then
+        REMAINING_TIME=`echo $ACPI_RESULT|cut -d ',' -f 3|cut -d ' ' -f 2`
+        BATTERY_LAPTOP="$BATTERY_LAPTOP [🔺 $REMAINING_TIME]"
+    else
+        BATTERY_LAPTOP="$BATTERY_LAPTOP [✅]"
+    fi
+fi
+BATTERY="💻 $BATTERY_LAPTOP\n"
 
 HEADSET_BLUETOOTH_ADDR=`bluetoothctl devices|grep Bose|cut -d ' ' -f 2`
 if [ ! -z "$HEADSET_BLUETOOTH_ADDR" ] ; then
     HEADSET_CONNECTED=`bluetoothctl info $HEADSET_BLUETOOTH_ADDR|grep 'Connected: yes'`
     if [ $? -eq 0 ] ; then
         BATTERY_HEADSET=`based-connect -b $HEADSET_BLUETOOTH_ADDR`
-        BATTERY="$BATTERY\n🎧 $BATTERY_HEADSET%"
+        BATTERY="$BATTERY🎧 $BATTERY_HEADSET%"
     fi
 fi
 
@@ -38,7 +62,7 @@ MOUSE_DEVICE=`upower -e|grep mouse_dev`
 MOUSE_BLUETOOTH_ADDR=`bluetoothctl devices|grep MX|cut -d ' ' -f 2`
 if [ ! -z "$MOUSE_BLUETOOTH_ADDR" ] && [ ! -z "$MOUSE_DEVICE" ] ; then
     BATTERY_MOUSE=`upower -i $MOUSE_DEVICE|grep percentage|tr -s ' '|cut -d ' ' -f 3`
-    BATTERY="$BATTERY\n🐁 $BATTERY_MOUSE"
+    BATTERY="$BATTERY | 🐁 $BATTERY_MOUSE"
 fi
 
 SPOTIFY_STATUS="▶"
