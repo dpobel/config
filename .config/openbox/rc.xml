@@ -682,6 +682,7 @@
     <application class="Slack">
       <decor>no</decor>
       <maximized>yes</maximized>
+      <desktop>1</desktop>
     </application>
     <application class="zoom" title="Zoom">
       <decor>no</decor>
