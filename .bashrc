@@ -75,8 +75,10 @@ source $OSH/oh-my-bash.sh
 
 export EDITOR=nvim
 export PAGER=most
+export BAT_PAGER="less -RF"
 export HISTCONTROL=ignoreboth
 export HISTIGNORE="cd:ls:[bf]g:clear"
+export FZF_DEFAULT_COMMAND="ag --hidden -l -U --nocolor -g ''"
 shopt -s histappend
 
 alias go=xdg-open
@@ -84,6 +86,7 @@ alias cd..="cd .."
 alias grep="grep --color"
 alias gt="git"
 alias got="git"
+alias bat=batcat
 alias fclogs="cd ~/dev/front-commerce/logs ; tail -f server.log | jq ."
 
 export NVM_DIR="$HOME/.nvm"

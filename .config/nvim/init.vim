@@ -9,8 +9,8 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'majutsushi/tagbar'
 Plug 'danro/rename.vim'
 Plug 'isa/vim-matchit'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'mhinz/vim-grepper'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'sheerun/vim-polyglot'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
@@ -131,29 +131,6 @@ let g:tagbar_autofocus = 1
 let g:tagbar_sort = 1
 let g:tagbar_show_visibility = 1
 
-map <C-g> :Grepper<cr>
-map <Leader><C-g> :Grepper -cword -query<cr>
-
-nmap gs <plug>(GrepperOperator)
-xmap gs <plug>(GrepperOperator)
-
-let g:grepper               = {}
-let g:grepper.highlight     = 1
-let g:grepper.tools         = ['git', 'ag']
-let g:grepper.next_tool     = '<leader>g'
-let g:grepper.simple_prompt = 1
-let g:grepper.dir = 'repo,cwd'
-let g:grepper.side_cmd = 'botright vnew'
-
-runtime plugin/grepper.vim
-
-let g:grepper.tools = ['git', 'git_grep_everything', 'ag']
-let g:grepper.git_grep_everything = {
-\   'grepprg':    'git grep -nI --untracked --no-exclude-standard',
-\   'grepformat': '%f:%l:%m',
-\   'escape':     '\^$.*[]',
-\ }
-
 " set termguicolors
 set bg=dark
 colorscheme desertink
@@ -180,20 +157,17 @@ let g:gutentags_exclude_filetypes = ['gitcommit', 'gitrebase', 'diff']
 let g:gutentags_plus_switch = 1
 let g:gutentags_plug_nomap = 1
 
-let g:ctrlp_root_markers = ['composer.json']
-let g:ctrlp_open_multiple_files = '2vjr' " open up to 2 new vertical split, jump to first and open first in current window
-let g:ctrlp_extensions = ['tag']
-if executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l -U --nocolor -g ""'
-endif
-"let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+let g:fzf_layout = { 'down': '40%' }
+noremap <silent> <C-p> :Files<cr>
+noremap <silent> <C-g> :Ag<cr>
+noremap <silent> <leader><C-b> :Buffers<cr>
+noremap <silent> <leader><C-t> :Tags<cr>
+noremap <expr> <leader><C-g> ':Ag '.expand('<cword>').'<cr>'
 
 " find symbol
 noremap <silent> <leader>s :GscopeFind s <C-R><C-W><cr>
 " find definition
 noremap <silent> <leader>d :GscopeFind g <C-R><C-W><cr>
-" find text under cursor
-noremap <silent> <Leader>f :Grepper -cword -tool git_grep_everything -noprompt<cr>
 
 nnoremap <Leader>t :execute 'tjump' expand('<cword>')<CR>
 nnoremap <Leader>wt :execute 'stjump' expand('<cword>')<CR>
