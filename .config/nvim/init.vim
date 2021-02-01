@@ -25,6 +25,7 @@ Plug 'arnaud-lb/vim-php-namespace'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ap/vim-css-color'
 Plug 'vim-vdebug/vdebug'
+Plug 'moll/vim-bbye'
 Plug 'simnalamburt/vim-mundo'
 Plug 'mhinz/vim-startify'
 " need to be loaded after the plugins it extend
