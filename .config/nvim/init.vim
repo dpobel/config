@@ -9,6 +9,7 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'tpope/vim-surround'
 Plug 'majutsushi/tagbar'
 Plug 'danro/rename.vim'
+Plug 'Yggdroot/indentLine'
 Plug 'isa/vim-matchit'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -39,6 +40,8 @@ let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDCommentEmptyLines = 0
+
+let g:indentLine_char = '┊'
 
 let g:startify_change_to_dir = 0
 let g:startify_update_oldfiles = 1
