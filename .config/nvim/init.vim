@@ -29,6 +29,7 @@ Plug 'ap/vim-css-color'
 Plug 'moll/vim-bbye'
 Plug 'simnalamburt/vim-mundo'
 Plug 'mhinz/vim-startify'
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 " need to be loaded after the plugins it extend
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
@@ -148,6 +149,30 @@ set wildignore+=*logs*
 " set wildignore+=*vendor*
 "set wildignore+=tags
 "set wildignore+=*coverage*
+
+""""""""""
+" Firevim
+" disable by default and enabled on github and gitlab
+let g:firenvim_config = {
+    \ 'globalSettings': {
+        \ 'alt': 'all',
+    \  },
+    \ 'localSettings': {
+        \ '.*': {
+            \ 'cmdline': 'neovim',
+            \ 'content': 'text',
+            \ 'priority': 0,
+            \ 'selector': 'textarea',
+            \ 'takeover': 'never',
+        \ },
+    \ }
+\ }
+
+let fc = g:firenvim_config['localSettings']
+let fc['.*gitlab.com.*'] = { 'takeover': 'always', 'priority': 1 }
+let fc['.*github.com.*'] = { 'takeover': 'always', 'priority': 1 }
+
+au BufEnter gitlab.com_*.txt set filetype=markdown
 
 let g:gutentags_modules = ['ctags', 'gtags_cscope']
 let g:gutentags_ctags_exclude_wildignore = 1
