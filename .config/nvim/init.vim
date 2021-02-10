@@ -118,6 +118,16 @@ set splitright
 
 :tnoremap <Esc> <C-\><C-n>
 
+" let's try to use it the right way
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
 nnoremap <Leader><Up>    :resize +5<CR>
 nnoremap <Leader><Down>  :resize -5<CR>
 nnoremap <Leader><Left>  :vertical resize -5<CR>
