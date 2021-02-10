@@ -241,6 +241,10 @@ timeout = 8
     appname = Slack
     new_icon = /usr/share/pixmaps/slack.png
 
+[bluetooth]
+    appname = blueman
+    new_icon = bluetooth
+
 [firefox-tab]
     appname = Firefox
     new_icon = /usr/share/icons/hicolor/64x64/apps/firefox.png
