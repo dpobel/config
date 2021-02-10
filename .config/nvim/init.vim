@@ -212,6 +212,9 @@ noremap <silent> <leader>d :GscopeFind g <C-R><C-W><cr>
 nnoremap <Leader>t :execute 'tjump' expand('<cword>')<CR>
 nnoremap <Leader>wt :execute 'stjump' expand('<cword>')<CR>
 
+nnoremap <expr> <Leader>mdn ':!firefox https://developer.mozilla.org/en-US/search?q='.expand('<cword>').'<cr>'
+nnoremap <expr> <Leader>duck ':!firefox https://duckduckgo.com/?q='.expand('<cword>').'<cr>'
+
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
