@@ -6,5 +6,6 @@ WINID=`wmctrl -x -l|grep -i slack.Slack|head -1| cut -d ' ' -f 1`
 if [ ! -z "$WINID" ] ; then
     wmctrl -i -a "$WINID"
 else
-    slack
+    slack &
+    (sleep 2 && WINID=`wmctrl -x -l|grep -i slack.Slack|head -1| cut -d ' ' -f 1` && xseticon -id "$WINID" /usr/share/pixmaps/slack.png) &
 fi

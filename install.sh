@@ -115,15 +115,23 @@ echo '# Installing nvm'
 
 echo ''
 echo '# Installing based-connect'
-
 [ ! -d ~/dev/tools/based-connect ] && git clone git@github.com:Denton-L/based-connect.git ~/dev/tools/based-connect
 cd ~/dev/tools/based-connect
 make
 cd -
 
 echo ''
+echo '# Installing xseticon'
+[ ! -d ~/dev/tools/xseticon ] && git clone git@github.com:xeyownt/xseticon.git ~/dev/tools/xseticon
+cd ~/dev/tools/xseticon
+sudo apt install libxmu-headers libgd-dev libxmu-dev libglib2.0-dev
+make
+cd -
+
+echo ''
 echo '# Installing custom scripts in ~/bin'
 [ ! -L ~/bin/based-connect ] && ln -r -s --suffix=".$$" ~/dev/tools/based-connect/based-connect ~/bin/based-connect
+[ ! -L ~/bin/xseticon ] && ln -r -s --suffix=".$$" ~/dev/tools/xseticon/xseticon ~/bin/xseticon
 [ ! -L ~/bin/xprofile ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/xprofile ~/bin/xprofile
 [ ! -L ~/bin/compositor ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/compositor ~/bin/compositor
 [ ! -L ~/bin/brightness ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/brightness ~/bin/brightness
