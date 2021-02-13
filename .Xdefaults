@@ -9,6 +9,7 @@ URxvt*cursorColor: white
 URxvt*cursorColor2: #aaaaaa
 
 URxvt.iconFile: /usr/share/icons/Humanity/apps/48/bash.svg
+Monitoring.iconFile: /usr/share/icons/Yaru/48x48/apps/gnome-system-monitor.png
 
 URxvt.iso14755: off
 URxvt.iso14755_52: off
