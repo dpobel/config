@@ -239,7 +239,7 @@ timeout = 8
 
 [slack]
     appname = Slack
-    new_icon = /usr/share/pixmaps/slack.png
+    new_icon = ~/.local/icon/slack.png
 
 [bluetooth]
     appname = blueman
