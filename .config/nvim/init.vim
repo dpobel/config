@@ -6,6 +6,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'majutsushi/tagbar'
 Plug 'danro/rename.vim'
@@ -36,6 +37,19 @@ call plug#end()
 
 set exrc   " read .nvimrc in directory where nvim is started
 set secure " limit what can be done in .nvimrc
+
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+"nmap s <Plug>(easymotion-overwin-f2)
+
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
 
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
