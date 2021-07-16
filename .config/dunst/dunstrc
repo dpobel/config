@@ -190,13 +190,13 @@ context = mod4+F9
 frame_color = "#5B8234"
 foreground = "#ffffff"
 background = "#191311"
-timeout = 4
+timeout = 8
 
 [urgency_normal]
 frame_color = "#3B7C87"
 foreground = "#ffffff"
 background = "#191311"
-timeout = 6
+timeout = 8
 
 [urgency_critical]
 frame_color = "#B7472A"
