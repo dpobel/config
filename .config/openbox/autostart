@@ -25,6 +25,7 @@ one-slack &
 notify-info &
 
 one-monitoring &
-compositor &
+# Buggy in dual screen setup :(
+# compositor &
 
 env > ~/.env.log
