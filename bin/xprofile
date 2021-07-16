@@ -5,7 +5,7 @@ LAPTOP_OUTPUT="eDP-1"
 CONNECTED=`xrandr | grep "$EXTERNAL_OUTPUT connected"`
 
 if [ "$CONNECTED" != "" ] ; then
-    xrandr --output $EXTERNAL_OUTPUT --auto --above $LAPTOP_OUTPUT
+    xrandr --output $EXTERNAL_OUTPUT --auto --right-of $LAPTOP_OUTPUT
 else
     xrandr --output $EXTERNAL_OUTPUT --off --auto
 fi
