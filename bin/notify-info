@@ -77,9 +77,9 @@ for DEVICE in `nmcli -g DEVICE,TYPE,STATE,CON-UUID,CONNECTION device|egrep '(eth
     TYPE=`echo $DEVICE|cut -d ':' -f 2`
     UUID=`echo $DEVICE|cut -d ':' -f 4`
     if [ "$TYPE" = "wifi" ] ; then
-        NAME=`echo $DEVICE|cut -d ':' -f 5-`
+        NAME="<span size='x-large' foreground='#ed7600'></span> `echo $DEVICE|cut -d ':' -f 5-`"
     else
-        NAME="Ethernet"
+        NAME="<span size='x-large' foreground='#ed7600'></span> Ethernet"
     fi
     IP=`nmcli -g ip4.address connection show $UUID|sed 's#/.*##g'`
     NETWORK="$NAME : $IP\n$NETWORK"
