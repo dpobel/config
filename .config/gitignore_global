@@ -1,2 +1,4 @@
 .nvimrc
 **/.php_cs
+.importjs.js
+.*mine*
