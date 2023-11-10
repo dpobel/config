@@ -16,19 +16,19 @@ Plug 'isa/vim-matchit'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'sheerun/vim-polyglot'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'skywind3000/gutentags_plus'
+" Plug 'ludovicchabant/vim-gutentags'
+" Plug 'skywind3000/gutentags_plus'
 Plug 'scrooloose/nerdcommenter'
-Plug 'StanAngeloff/php.vim'
+" Plug 'StanAngeloff/php.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'tobyS/vmustache'
+" Plug 'tobyS/vmustache'
 "Plug 'tobyS/pdv'
-Plug 'YaroslavMolchan/pdv'
-Plug 'arnaud-lb/vim-php-namespace'
+" Plug 'YaroslavMolchan/pdv'
+" Plug 'arnaud-lb/vim-php-namespace'
 " Plug 'galooshi/vim-import-js'
 Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/nvim-lsp-installer'
+Plug 'williamboman/mason.nvim'
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ap/vim-css-color'
@@ -36,10 +36,66 @@ Plug 'ap/vim-css-color'
 Plug 'moll/vim-bbye'
 Plug 'simnalamburt/vim-mundo'
 Plug 'mhinz/vim-startify'
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+" Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 " need to be loaded after the plugins it extend
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
+
+lua << EOF
+require("mason").setup()
+
+
+-- Setup language servers.
+local lspconfig = require('lspconfig')
+lspconfig.pyright.setup {}
+lspconfig.tsserver.setup {}
+lspconfig.rust_analyzer.setup {
+  -- Server-specific settings. See `:help lspconfig-setup`
+  settings = {
+    ['rust-analyzer'] = {},
+  },
+}
+
+
+-- Global mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<space>f', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+  end,
+})
+
+EOF
 
 set exrc   " read .nvimrc in directory where nvim is started
 set secure " limit what can be done in .nvimrc
@@ -47,7 +103,6 @@ set secure " limit what can be done in .nvimrc
 let g:js_file_import_use_fzf = 1
 let g:js_file_import_string_quote = '"'
 
-lua require("lsp-config")
 
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
@@ -302,13 +357,13 @@ let g:ale_php_phpstan_level = '9'
 " let g:php_cs_fixer_path = "~/bin/php-cs-fixer"
 " let g:php_cs_fixer_rules = "@PSR2"
 
-let g:pdv_template_dir = $HOME . "/.config/nvim/pdv_templates"
-map <Leader><C-d> :call pdv#DocumentCurrentLine()<CR>
+" let g:pdv_template_dir = $HOME . "/.config/nvim/pdv_templates"
+" map <Leader><C-d> :call pdv#DocumentCurrentLine()<CR>
 
-let g:php_namespace_sort_after_insert = 1
-noremap <Leader>u :call PhpInsertUse()<CR>
-noremap <Leader>e :call PhpExpandClass()<CR>
-noremap <Leader>ns :call PhpSortUse()<CR>
+" let g:php_namespace_sort_after_insert = 1
+" noremap <Leader>u :call PhpInsertUse()<CR>
+" noremap <Leader>e :call PhpExpandClass()<CR>
+" noremap <Leader>ns :call PhpSortUse()<CR>
 
 set laststatus=2 " display airline bar all the time
 "cnoremap w!! w !sudo tee % >/dev/null
@@ -319,7 +374,7 @@ set pastetoggle=<ins>
 nnoremap <silent> <ins> :setlocal paste!<CR>i
 autocmd InsertLeave <buffer> se nopaste
 
-autocmd VimLeavePre * :mksession! ~/tmp/stopped.vim
+" autocmd VimLeavePre * :mksession! ~/tmp/stopped.vim
 
 "let g:user_emmet_leader_key=','
 
