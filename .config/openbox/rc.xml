@@ -62,13 +62,12 @@
     <primaryMonitor/>
   </placement>
   <desktops>
-    <number>4</number>
+    <number>3</number>
     <firstdesk>1</firstdesk>
     <names>
       <name>one</name>
       <name>two</name>
       <name>three</name>
-      <name>four</name>
     </names>
     <popupTime>875</popupTime>
   </desktops>
@@ -185,17 +184,17 @@
     </keybind>
     <keybind key="Print">
       <action name="Execute">
-        <execute>scrot -e 'mv $f ~/tmp/'</execute>
+          <execute>scrot -e 'mv $f ~/tmp/; cat ~/tmp/$f|xclip -selection clipboard -t image/png -i'</execute>
       </action>
     </keybind>
     <keybind key="C-Print">
       <action name="Execute">
-        <execute>scrot -s -e 'mv $f ~/tmp/'</execute>
+        <execute>scrot -s -e 'mv $f ~/tmp/; cat ~/tmp/$f|xclip -selection clipboard -t image/png -i'</execute>
       </action>
     </keybind>
     <keybind key="A-Print">
       <action name="Execute">
-        <execute>scrot -u -e 'mv $f ~/tmp/'</execute>
+        <execute>scrot -u -e 'mv $f ~/tmp/; cat ~/tmp/$f|xclip -selection clipboard -t image/png -i'</execute>
       </action>
     </keybind>
     <keybind key="W-K">
@@ -409,6 +408,11 @@
     <keybind key="XF86MonBrightnessUp">
       <action name="Execute">
         <command>brightness up</command>
+      </action>
+    </keybind>
+    <keybind key="C-F7">
+      <action name="Execute">
+        <command>xprofile</command>
       </action>
     </keybind>
     <keybind key="XF86Display">
@@ -676,7 +680,7 @@
     <bottom>0</bottom>
   </margins>
   <applications>
-    <application class="Firefox" role="browser">
+    <application class="firefox" name="Navigator">
       <decor>no</decor>
       <maximized>yes</maximized>
     </application>
@@ -685,7 +689,12 @@
       <maximized>yes</maximized>
       <desktop>1</desktop>
     </application>
-    <application class="zoom" title="Zoom">
+    <application class="Signal">
+      <decor>no</decor>
+      <maximized>no</maximized>
+      <desktop>1</desktop>
+    </application>
+    <application title="Zoom">
       <decor>no</decor>
       <maximized>no</maximized>
       <layer>above</layer>
@@ -695,11 +704,10 @@
           <height>10%</height>
       </size>
     </application>
-    <application title="*tre sans nom" role="">
-      <!-- spotify, see https://community.spotify.com/t5/Desktop-Linux/WM-CLASS-window-property-on-Linux/td-p/1247042 -->
+    <application title="Spotify" role="">
       <decor>no</decor>
       <maximized>yes</maximized>
-      <desktop>4</desktop>
+      <desktop>3</desktop>
     </application>
     <application class="Firefox" role="page-info">
       <decor>yes</decor>
