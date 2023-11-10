@@ -25,6 +25,11 @@ Plug 'tobyS/vmustache'
 "Plug 'tobyS/pdv'
 Plug 'YaroslavMolchan/pdv'
 Plug 'arnaud-lb/vim-php-namespace'
+" Plug 'galooshi/vim-import-js'
+Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ap/vim-css-color'
 " Plug 'vim-vdebug/vdebug'
@@ -38,6 +43,11 @@ call plug#end()
 
 set exrc   " read .nvimrc in directory where nvim is started
 set secure " limit what can be done in .nvimrc
+
+let g:js_file_import_use_fzf = 1
+let g:js_file_import_string_quote = '"'
+
+lua require("lsp-config")
 
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
@@ -133,6 +143,13 @@ set splitright
 
 :tnoremap <Esc> <C-\><C-n>
 
+" make current full screen
+nmap <F11> :only<CR>
+" make current buffer full height at the far right
+nmap <F10> <C-W>L
+" make current buffer full with at the bottom
+nmap <F9> <C-W>J
+
 " let's try to use it the right way
 nnoremap <up> <nop>
 nnoremap <down> <nop>
@@ -203,7 +220,7 @@ let g:gutentags_modules = ['ctags', 'gtags_cscope']
 let g:gutentags_ctags_exclude_wildignore = 1
 let g:gutentags_cache_dir = "~/.cache/gutentags"
 let g:gutentags_define_advanced_commands = 1
-let g:gutentags_project_root = ['composer.json']
+let g:gutentags_project_root = ['pnpm-lock.yaml', 'composer.json', 'package.json']
 " for PHP don't add aliases (ie use of a namespace) in tag files
 " this make arnaud-lb/vim-php-namespace much easier to use
 let g:gutentags_ctags_extra_args = ['--kinds-PHP=-a']
@@ -213,11 +230,19 @@ let g:gutentags_plus_switch = 1
 let g:gutentags_plug_nomap = 1
 
 let g:fzf_layout = { 'down': '40%' }
+
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'git grep -l --line-number -- '.shellescape(<q-args>), 0,
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+
 noremap <silent> <C-p> :Files<cr>
 noremap <silent> <C-g> :Ag<cr>
+noremap <expr> <A-g> ':GGrep '.expand('<cword>').'<cr>'
 noremap <silent> <leader><C-b> :Buffers<cr>
 noremap <silent> <leader><C-t> :Tags<cr>
 noremap <expr> <leader><C-g> ':Ag '.expand('<cword>').'<cr>'
+
 
 " find symbol
 noremap <silent> <leader>s :GscopeFind s <C-R><C-W><cr>
@@ -259,12 +284,17 @@ let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   'php': ['trim_whitespace', 'php_cs_fixer'],
 \   'javascript': ['trim_whitespace', 'prettier', 'eslint'],
+\   'javascriptreact': ['trim_whitespace', 'prettier', 'eslint'],
+\   'typescript': ['trim_whitespace', 'prettier', 'eslint'],
+\   'typescriptreact': ['trim_whitespace', 'prettier', 'eslint'],
 \   'graphql': ['trim_whitespace', 'prettier', 'eslint'],
 \   'scss': ['trim_whitespace', 'prettier', 'eslint'],
 \   'json': ['trim_whitespace', 'prettier'],
 \   'yaml': ['trim_whitespace'],
 \   'markdown': ['trim_whitespace']
 \}
+
+let g:ale_scss_stylelint_use_global = 1
 
 let g:ale_php_phpcs_standard = 'PSR2'
 let g:ale_php_phpstan_level = '9'
