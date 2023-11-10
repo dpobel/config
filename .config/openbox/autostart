@@ -34,6 +34,6 @@ notify-info &
 
 one-monitoring &
 # Buggy in dual screen setup :(
-# compositor &
+compositor &
 
 env > ~/.env.log
