@@ -9,7 +9,7 @@ BODY=$3
 
 URL=`echo $BODY | sed -e 's@.*\(https://.*\)@\1@g'`
 if [ ! -z "$URL" ] ; then
-    xdg-open "$URL" &
+    google-chrome "$URL" &
     BODY="Opening $URL"
 fi
 

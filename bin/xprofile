@@ -1,11 +1,25 @@
 #! /bin/sh
 
-EXTERNAL_OUTPUT="DP-2-1"
+set -x
+
+EXTERNAL_WIDE="DP-2-1"
+EXTERNAL_24="DP-2-2"
+# EXTERNAL_OUTPUT="DP-2-1"
+# EXTERNAL_OUTPUT="HDMI-2"
 LAPTOP_OUTPUT="eDP-1"
-CONNECTED=`xrandr | grep "$EXTERNAL_OUTPUT connected"`
+CONNECTED=`xrandr | grep "$EXTERNAL_WIDE connected"`
 
 if [ "$CONNECTED" != "" ] ; then
-    xrandr --output $EXTERNAL_OUTPUT --auto --right-of $LAPTOP_OUTPUT
+    # xrandr --output $EXTERNAL_OUTPUT --auto --right-of $LAPTOP_OUTPUT --output $LAPTOP_OUTPUT --off
+    # xrandr --output $EXTERNAL_OUTPUT --auto --right-of $LAPTOP_OUTPUT
+    # xrandr --output $EXTERNAL_OUTPUT --auto --left-of $LAPTOP_OUTPUT
+    # xrandr --output $EXTERNAL_WIDE --auto --left-of $LAPTOP_OUTPUT
+    xrandr --output $LAPTOP_OUTPUT --auto --output $EXTERNAL_WIDE --mode 2560x1080 --rate 60 --right-of $LAPTOP_OUTPUT --output $EXTERNAL_24 --auto --right-of $EXTERNAL_WIDE
+    # xrandr --output DP-2-1 --primary --mode 2560x1080 --rate 60 --left-of eDP-1 --output DP-2-2 --auto --left-of DP-2-1 --output eDP-1 --auto --verbose
 else
-    xrandr --output $EXTERNAL_OUTPUT --off --auto
+    xrandr --output $EXTERNAL_WIDE --off --output $EXTERNAL_24 --off --output $LAPTOP_OUTPUT --auto
 fi
+
+# not strictly related to X but it allows to make sure the keyboard mapping
+# works on the external keyboard
+xmodmap ~/.Xmodmap

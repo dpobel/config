@@ -16,14 +16,25 @@ if [ ! -f  /etc/apt/sources.list.d/spotify.list ] ; then
     echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 fi
 
+if [ ! -f  /etc/apt/sources.list.d/signal-xenial.list ] ; then
+    wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
+    cat signal-desktop-keyring.gpg | sudo tee -a /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null
+    echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
+fi
+
 if [ ! -f  /etc/apt/sources.list.d/azlux.list ] ; then
     # gping
     echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
     curl -sS https://azlux.fr/repo.gpg.key | sudo apt-key add -
 fi
 
+# 3. Update your package database and install signal
+sudo apt update && sudo apt install signal-desktop
+
 sudo apt update
-sudo apt install rxvt-unicode openbox openbox-gnome-session openbox-menu obconf neovim feh compton tig cbatticon spotify-client stalonetray global universal-ctags blueman scrot most graphicsmagick silversearcher-ag gnome-screensaver gimp jq wmctrl dunst libbluetooth-dev build-essential lm-sensors tmux bwm-ng htop gping acpi bat
+sudo apt install rxvt-unicode openbox openbox-gnome-session openbox-menu obconf neovim feh compton tig cbatticon spotify-client stalonetray global universal-ctags blueman scrot most graphicsmagick silversearcher-ag gnome-screensaver gimp jq wmctrl dunst libbluetooth-dev build-essential lm-sensors tmux bwm-ng gping acpi bat xclip signal-desktop suckless-tools xsel htop
+
+# TODO install nvm and then gtop
 
 echo ''
 echo '# Installing Inconsolata Nerd Font'
@@ -137,6 +148,7 @@ echo '# Installing custom scripts in ~/bin'
 [ ! -L ~/bin/brightness ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/brightness ~/bin/brightness
 [ ! -L ~/bin/one-monitoring ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/one-monitoring ~/bin/one-monitoring
 [ ! -L ~/bin/one-slack ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/one-slack ~/bin/one-slack
+[ ! -L ~/bin/one-signal ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/one-signal ~/bin/one-signal
 [ ! -L ~/bin/notify-info ] && ln -r -s --suffix=".$$" $CONFIG_DIR/bin/notify-info ~/bin/notify-info
 [ ! -L ~/bin/one-spotify ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/one-spotify ~/bin/one-spotify
 [ ! -L ~/bin/_receive-spotify-notification ] && ln -r -s --suffix=".$$" -s $CONFIG_DIR/bin/_receive-spotify-notification ~/bin/_receive-spotify-notification

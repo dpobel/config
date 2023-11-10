@@ -7,5 +7,6 @@ if [ ! -z "$WINID" ] ; then
     wmctrl -i -a "$WINID"
 else
     rm -f ~/.last-spotify-notification
-    \spotify
+    \spotify &
+    (sleep 2 && WINID=`wmctrl -x -l|grep -i spotify.Spotify|head -1| cut -d ' ' -f 1` && xseticon -id "$WINID" /usr/share/spotify/icons/spotify-linux-256.png) &
 fi
