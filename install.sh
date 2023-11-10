@@ -12,7 +12,7 @@ echo '# Installing packages'
 
 sudo apt install curl
 if [ ! -f  /etc/apt/sources.list.d/spotify.list ] ; then
-    curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
+    curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
     echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 fi
 
@@ -24,7 +24,7 @@ fi
 
 if [ ! -f  /etc/apt/sources.list.d/azlux.list ] ; then
     # gping
-    echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
+    echo "deb http://packages.azlux.fr/debian/ stable main" | sudo tee /etc/apt/sources.list.d/azlux.list
     curl -sS https://azlux.fr/repo.gpg.key | sudo apt-key add -
 fi
 
