@@ -1,49 +1,120 @@
 let mapleader=" "
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'toupeira/vim-desertink'
-Plug 'scrooloose/nerdtree'
+" Dependencies of neo-tree.nvim
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'nvim-neo-tree/neo-tree.nvim', {'branch': 'v3.x'}
+
+" LSP and friends
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/mason.nvim'
+Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+
+Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'} " Replace <CurrentMajor> by the latest released major (first number of latest release)
+
+Plug 'windwp/nvim-autopairs'
+
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+
 Plug 'w0rp/ale'
-Plug 'vim-airline/vim-airline'
+
+Plug 'freddiehaddad/feline.nvim'
+Plug 'lewis6991/gitsigns.nvim'
+
+Plug 'github/copilot.vim'
+
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
-Plug 'majutsushi/tagbar'
+Plug 'preservim/tagbar'
 Plug 'AndrewRadev/tagalong.vim'
 Plug 'danro/rename.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'isa/vim-matchit'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'sheerun/vim-polyglot'
-" Plug 'ludovicchabant/vim-gutentags'
-" Plug 'skywind3000/gutentags_plus'
+"Plug 'sheerun/vim-polyglot'
+
+Plug 'yssl/QFEnter'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 Plug 'scrooloose/nerdcommenter'
-" Plug 'StanAngeloff/php.vim'
-Plug 'jiangmiao/auto-pairs'
-" Plug 'tobyS/vmustache'
-"Plug 'tobyS/pdv'
-" Plug 'YaroslavMolchan/pdv'
-" Plug 'arnaud-lb/vim-php-namespace'
-" Plug 'galooshi/vim-import-js'
-Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
-Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/mason.nvim'
-Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+
 Plug 'editorconfig/editorconfig-vim'
+
 Plug 'ap/vim-css-color'
-" Plug 'vim-vdebug/vdebug'
+
 Plug 'moll/vim-bbye'
+
 Plug 'simnalamburt/vim-mundo'
 Plug 'mhinz/vim-startify'
+
+Plug 'EdenEast/nightfox.nvim'
+" TODO: test it more
+Plug 'navarasu/onedark.nvim'
 " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-" need to be loaded after the plugins it extend
-Plug 'ryanoasis/vim-devicons'
+
+Plug 'nvim-tree/nvim-web-devicons'
 call plug#end()
 
+set termguicolors
+set bg=dark
+" colorscheme nightfox
+
 lua << EOF
+require('nightfox').setup({
+  options = {
+    styles = {
+      conditionals = "bold",
+      keywords = "bold",
+      operators = "bold",
+      types = "bold",
+    }
+  }
+})
+vim.cmd("colorscheme nightfox")
+
+-- language servers
 require("mason").setup()
 
+-- Treesitter
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all" (the five listed parsers should always be installed)
+  ensure_installed = { "lua", "vim", "vimdoc", "query", "typescript", "tsx", "javascript", "css", "sql", "graphql", "bash", "json", "dockerfile", "diff", "php" },
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  auto_install = true,
+
+  -- List of parsers to ignore installing (or "all")
+  ignore_install = { },
+
+  ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
+  -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+
+  highlight = {
+    enable = true,
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
 
 -- Setup language servers.
 local lspconfig = require('lspconfig')
@@ -95,6 +166,100 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+require("neo-tree").setup({
+  filesystem = {
+    filtered_items = {
+      hide_dotfiles = false,
+      hide_gitignored = true,
+    },
+  }
+})
+
+require('feline').setup()
+-- require('feline').use_theme()
+
+require('gitsigns').setup()
+
+
+-- show source in diagnostics
+-- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#show-source-in-diagnostics
+vim.diagnostic.config({
+  virtual_text = {
+    source = "always",  -- Or "if_many"
+  },
+  float = {
+    source = "always",  -- Or "if_many"
+  },
+})
+
+
+
+-- Set up nvim-cmp.
+local cmp = require'cmp'
+
+cmp.setup({
+snippet = {
+  -- REQUIRED - you must specify a snippet engine
+  expand = function(args)
+    require('luasnip').lsp_expand(args.body)
+  end,
+},
+window = {
+  -- completion = cmp.config.window.bordered(),
+  -- documentation = cmp.config.window.bordered(),
+},
+mapping = cmp.mapping.preset.insert({
+  ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+  ['<C-f>'] = cmp.mapping.scroll_docs(4),
+  ['<C-Space>'] = cmp.mapping.complete(),
+  ['<C-e>'] = cmp.mapping.abort(),
+  ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+}),
+sources = cmp.config.sources({
+  { name = 'nvim_lsp' },
+  { name = 'luasnip' }, -- For luasnip users.
+}, {
+  { name = 'buffer' },
+})
+})
+
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
+mapping = cmp.mapping.preset.cmdline(),
+sources = {
+  { name = 'buffer' }
+}
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+mapping = cmp.mapping.preset.cmdline(),
+sources = cmp.config.sources({
+  { name = 'path' }
+}, {
+  { name = 'cmdline' }
+})
+})
+
+-- Set up lspconfig.
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+require('lspconfig')['tsserver'].setup {
+  capabilities = capabilities
+}
+require('lspconfig')['bashls'].setup {
+  capabilities = capabilities
+}
+
+require("nvim-autopairs").setup {}
+
+-- If you want insert `(` after select function or method item
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local cmp = require('cmp')
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
+
 EOF
 
 set exrc   " read .nvimrc in directory where nvim is started
@@ -102,7 +267,6 @@ set secure " limit what can be done in .nvimrc
 
 let g:js_file_import_use_fzf = 1
 let g:js_file_import_string_quote = '"'
-
 
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
@@ -138,10 +302,6 @@ let g:startify_lists = [
         \ { 'type': function('s:gitModifiedUntracked'),  'header': ['    git untracked and modified']},
         \ ]
 let g:startify_session_sort = 1
-let g:startify_session_before_save = [
-        \ 'echo "Cleaning up before saving…"',
-        \ 'silent! NERDTreeClose'
-        \ ]
 let g:startify_session_persistence = 1
 
 set incsearch
@@ -206,14 +366,15 @@ nmap <F10> <C-W>L
 nmap <F9> <C-W>J
 
 " let's try to use it the right way
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+" commented to be able to use modals in neo-tree
+" nnoremap <up> <nop>
+" nnoremap <down> <nop>
+" nnoremap <left> <nop>
+" nnoremap <right> <nop>
+" inoremap <up> <nop>
+" inoremap <down> <nop>
+" inoremap <left> <nop>
+" inoremap <right> <nop>
 
 nnoremap <Leader><Up>    :resize +5<CR>
 nnoremap <Leader><Down>  :resize -5<CR>
@@ -223,29 +384,16 @@ nnoremap <Leader><Right> :vertical resize +5<CR>
 nnoremap <F4> :MundoToggle<CR>
 let g:mundo_right = 1
 
-map <F2> :NERDTreeToggle<CR>
-map <Leader><F2> :NERDTreeFind<CR>
-
-let g:NERDTreeShowHidden = 1
+map <F2> :Neotree toggle<CR>
+map <Leader><F2> :Neotree reveal<CR>
+map <F5> :Neotree source=buffers toggle<CR>
+map <F6> :Neotree source=git_status toggle<CR>
 
 map <F3> :TagbarToggle<CR>
 let g:tagbar_width = 30
 let g:tagbar_autofocus = 1
 let g:tagbar_sort = 1
 let g:tagbar_show_visibility = 1
-
-" set termguicolors
-set bg=dark
-colorscheme desertink
-" colorscheme solarized
-
-set wildignore+=*node_modules*
-set wildignore+=*build*
-set wildignore+=*cache*
-set wildignore+=*logs*
-" set wildignore+=*vendor*
-"set wildignore+=tags
-"set wildignore+=*coverage*
 
 """"""""""
 " Firevim
@@ -271,19 +419,6 @@ let fc['.*github.com.*'] = { 'takeover': 'always', 'priority': 1 }
 
 au BufEnter gitlab.com_*.txt set filetype=markdown
 
-let g:gutentags_modules = ['ctags', 'gtags_cscope']
-let g:gutentags_ctags_exclude_wildignore = 1
-let g:gutentags_cache_dir = "~/.cache/gutentags"
-let g:gutentags_define_advanced_commands = 1
-let g:gutentags_project_root = ['pnpm-lock.yaml', 'composer.json', 'package.json']
-" for PHP don't add aliases (ie use of a namespace) in tag files
-" this make arnaud-lb/vim-php-namespace much easier to use
-let g:gutentags_ctags_extra_args = ['--kinds-PHP=-a']
-let g:gutentags_exclude_filetypes = ['gitcommit', 'gitrebase', 'diff']
-
-let g:gutentags_plus_switch = 1
-let g:gutentags_plug_nomap = 1
-
 let g:fzf_layout = { 'down': '40%' }
 
 command! -bang -nargs=* GGrep
@@ -293,16 +428,12 @@ command! -bang -nargs=* GGrep
 
 noremap <silent> <C-p> :Files<cr>
 noremap <silent> <C-g> :Ag<cr>
-noremap <expr> <A-g> ':GGrep '.expand('<cword>').'<cr>'
 noremap <silent> <leader><C-b> :Buffers<cr>
 noremap <silent> <leader><C-t> :Tags<cr>
 noremap <expr> <leader><C-g> ':Ag '.expand('<cword>').'<cr>'
 
-
-" find symbol
-noremap <silent> <leader>s :GscopeFind s <C-R><C-W><cr>
-" find definition
-noremap <silent> <leader>d :GscopeFind g <C-R><C-W><cr>
+" quickfix close 
+noremap <silent> <leader>q :cclose<cr>
 
 nnoremap <Leader>t :execute 'tjump' expand('<cword>')<CR>
 nnoremap <Leader>wt :execute 'stjump' expand('<cword>')<CR>
@@ -310,31 +441,11 @@ nnoremap <Leader>wt :execute 'stjump' expand('<cword>')<CR>
 nnoremap <expr> <Leader>mdn ':!firefox https://developer.mozilla.org/en-US/search?q='.expand('<cword>').'<cr>'
 nnoremap <expr> <Leader>duck ':!firefox https://duckduckgo.com/?q='.expand('<cword>').'<cr>'
 
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-
-" airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.whitespace = 'Ξ'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.notexists = 'Ɇ'
-let g:airline_symbols.whitespace = 'Ξ'
-let g:airline_symbols.dirty='⚡'
-
-let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_column_always = 1
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
+let g:ale_disable_lsp = 1
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   'php': ['trim_whitespace', 'php_cs_fixer'],
@@ -354,19 +465,21 @@ let g:ale_scss_stylelint_use_global = 1
 let g:ale_php_phpcs_standard = 'PSR2'
 let g:ale_php_phpstan_level = '9'
 
-" let g:php_cs_fixer_path = "~/bin/php-cs-fixer"
-" let g:php_cs_fixer_rules = "@PSR2"
+" press <Tab> to expand or jump in a snippet. These can also be mapped separately
+" via <Plug>luasnip-expand-snippet and <Plug>luasnip-jump-next.
+imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
+" -1 for jumping backwards.
+inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
 
-" let g:pdv_template_dir = $HOME . "/.config/nvim/pdv_templates"
-" map <Leader><C-d> :call pdv#DocumentCurrentLine()<CR>
+snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
+snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
 
-" let g:php_namespace_sort_after_insert = 1
-" noremap <Leader>u :call PhpInsertUse()<CR>
-" noremap <Leader>e :call PhpExpandClass()<CR>
-" noremap <Leader>ns :call PhpSortUse()<CR>
+" For changing choices in choiceNodes (not strictly necessary for a basic setup).
+imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
+smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
 
 set laststatus=2 " display airline bar all the time
-"cnoremap w!! w !sudo tee % >/dev/null
+cnoremap w!! w !sudo tee % >/dev/null
 
 map \ :nohlsearch<CR>
 
@@ -374,16 +487,7 @@ set pastetoggle=<ins>
 nnoremap <silent> <ins> :setlocal paste!<CR>i
 autocmd InsertLeave <buffer> se nopaste
 
-" autocmd VimLeavePre * :mksession! ~/tmp/stopped.vim
-
-"let g:user_emmet_leader_key=','
-
-"au BufRead,BufNewFile *.twig        set filetype=jinja
-"au BufRead,BufNewFile *.html.twig   set filetype=htmljinja
-"au BufRead,BufNewFile *.swig        set filetype=htmljinja
-
 au BufRead,BufNewFile *.md  set ft=markdown
-"au BufRead,BufNewFile *.hbt  set ft=mustache
 
 " no line number in terminal
 au TermOpen * set nonumber norelativenumber
