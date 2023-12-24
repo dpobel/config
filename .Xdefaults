@@ -1,6 +1,7 @@
 URxvt*geometry: 120x40
 URxvt*font: xft:Inconsolata Nerd Font Mono:pixelsize=18,autohint=1,hintstyle=hintnone
-URxvt*letterSpace: -1
+! breaks some nerd font icons…
+! URxvt*letterSpace: -1
 
 URxvt*saveLines: 10000
 URxvt*scrollBar: false
