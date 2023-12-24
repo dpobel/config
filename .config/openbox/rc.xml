@@ -717,6 +717,10 @@
       <decor>no</decor>
       <maximized>yes</maximized>
     </application>
+    <application class="Code">
+      <maximized>yes</maximized>
+      <decor>no</decor>
+    </application>
     <application class="URxvt">
       <decor>no</decor>
     </application>
