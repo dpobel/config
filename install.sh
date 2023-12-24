@@ -32,18 +32,18 @@ fi
 sudo apt update && sudo apt install signal-desktop
 
 sudo apt update
-sudo apt install rxvt-unicode openbox openbox-gnome-session openbox-menu obconf neovim feh compton tig cbatticon spotify-client stalonetray global universal-ctags blueman scrot most graphicsmagick silversearcher-ag gnome-screensaver gimp jq wmctrl dunst libbluetooth-dev build-essential lm-sensors tmux bwm-ng gping acpi bat xclip signal-desktop suckless-tools xsel htop
+sudo apt install rxvt-unicode openbox openbox-gnome-session openbox-menu obconf neovim feh compton tig cbatticon spotify-client stalonetray global universal-ctags blueman scrot most graphicsmagick silversearcher-ag gnome-screensaver gimp jq wmctrl dunst libbluetooth-dev build-essential lm-sensors tmux bwm-ng gping acpi bat xclip signal-desktop suckless-tools xsel htop unzip
 
 # TODO install nvm and then gtop
 
 echo ''
 echo '# Installing Inconsolata Nerd Font'
 
-if [ ! -d ~/.fonts ] ; then
-    mkdir ~/.fonts
-    cd ~/.fonts
-    wget 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Inconsolata/complete/Inconsolata%20Regular%20Nerd%20Font%20Complete%20Mono.ttf'
-    wget 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Inconsolata/complete/Inconsolata%20Bold%20Nerd%20Font%20Complete%20Mono.ttf'
+if [ ! -d ~/.local/share/fonts ] ; then
+    mkdir ~/.local/share/fonts
+    cd ~/.local/share/fonts
+    wget 'https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Inconsolata.zip' -O /tmp/Inconsolata.zip
+    unzip /tmp/Inconsolata.zip
     cd -
 fi
 
