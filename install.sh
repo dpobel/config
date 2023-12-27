@@ -40,7 +40,7 @@ echo ''
 echo '# Installing Inconsolata Nerd Font'
 
 if [ ! -d ~/.local/share/fonts ] ; then
-    mkdir ~/.local/share/fonts
+    mkdir -p ~/.local/share/fonts
     cd ~/.local/share/fonts
     wget 'https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Inconsolata.zip' -O /tmp/Inconsolata.zip
     unzip /tmp/Inconsolata.zip
