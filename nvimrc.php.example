@@ -1,5 +1,0 @@
-" to rename to .nvimrc in the project directory
-let g:ale_php_phpstan_executable = "./vendor/bin/phpstan"
-let g:ale_php_phpstan_level = '4'
-
-let g:gutentags_ctags_exclude = ['*.phar', 'vendor/*/bin', 'vendor/*/test*',  'vendor/*/Test*',  'vendor/*/fixture*', 'vendor/*/Fixture*', '*.ini', '*.json', '*.js', '*.xml', '*.md', '*.html', '*.rst', '*.css', '*.asciidoc', 'Makefile']
