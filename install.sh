@@ -102,7 +102,6 @@ if [ ! -d ~/.config/nvim/autoload ] ; then
     mkdir -p ~/.config/nvim/autoload
     [ ! -L ~/.config/nvim/init.vim ] && ln -b -r --suffix=".$$" -s $CONFIG_DIR/.config/nvim/init.vim ~/.config/nvim/
     [ ! -L ~/.config/nvim/after ] && mv ~/.config/nvim/after ~/.config/nvim/after.$$ ; ln -r -s $CONFIG_DIR/.config/nvim/after ~/.config/nvim/
-    [ ! -L ~/.config/nvim/pdv_templates ] && mv ~/.config/nvim/pdv_templates ~/.config/nvim/pdv_templates.$$ ; ln -r -s $CONFIG_DIR/.config/nvim/pdv_templates ~/.config/nvim/
     wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -O ~/.config/nvim/autoload/plug.vim
     nvim -c 'PlugInstall' -c 'qa!' --headless
 fi
