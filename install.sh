@@ -28,13 +28,8 @@ if [ ! -f  /etc/apt/sources.list.d/azlux.list ] ; then
     curl -sS https://azlux.fr/repo.gpg.key | sudo apt-key add -
 fi
 
-# 3. Update your package database and install signal
-sudo apt update && sudo apt install signal-desktop
-
 sudo apt update
-sudo apt install rxvt-unicode openbox openbox-gnome-session openbox-menu obconf neovim feh compton tig cbatticon spotify-client stalonetray global universal-ctags blueman scrot most graphicsmagick silversearcher-ag gnome-screensaver gimp jq wmctrl dunst libbluetooth-dev build-essential lm-sensors tmux bwm-ng gping acpi bat xclip signal-desktop suckless-tools xsel htop unzip
-
-# TODO install nvm and then gtop
+sudo apt install rxvt-unicode openbox openbox-gnome-session openbox-menu obconf neovim feh compton tig cbatticon spotify-client stalonetray global universal-ctags blueman scrot most graphicsmagick silversearcher-ag gnome-screensaver gimp jq wmctrl dunst libbluetooth-dev build-essential lm-sensors tmux bwm-ng gping acpi bat xclip signal-desktop suckless-tools xsel htop unzip obsession
 
 echo ''
 echo '# Installing Inconsolata Nerd Font'
