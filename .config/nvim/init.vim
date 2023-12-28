@@ -39,7 +39,7 @@ Plug 'preservim/tagbar'
 Plug 'AndrewRadev/tagalong.vim'
 Plug 'danro/rename.vim'
 Plug 'Yggdroot/indentLine'
-Plug 'isa/vim-matchit'
+Plug 'andymass/vim-matchup'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 "Plug 'sheerun/vim-polyglot'
@@ -113,6 +113,12 @@ require'nvim-treesitter.configs'.setup {
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
+  },
+
+  matchup = {
+    enable = true,              -- mandatory, false will disable the whole extension
+    disable = { },  -- optional, list of language that will be disabled
+    -- [options]
   },
 }
 
