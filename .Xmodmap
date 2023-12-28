@@ -1,2 +1,17 @@
 ! AltGr + ; = …
 keycode  59 = semicolon period semicolon period ellipsis multiply multiply multiply
+
+! Properly map ²
+! Shift + ² = ₂
+keycode  49 = twosuperior U2082
+
+! AltGr + < = «
+! AltGr + Shift + > = »
+keycode 94 = less greater less greater guillemotleft guillemotright
+
+! AtlGr + o = œ
+! AltGr + Shift + o = Œ
+keycode  32 = o O o O oe OE ocircumflex odiaeresis o O ocircumflex odiaeresis
+
+! AltGr + 7 = ` on first press (grave instead of dead_grave)
+keycode  16 = egrave 7 egrave 7 grave Egrave dead_grave Egrave egrave 7 dead_grave Egrave egrave 7 dead_grave Egrave
