@@ -1,10 +1,10 @@
 #! /bin/bash
 # Raise or run local monitoring if not already there
 
-WINID=`wmctrl -x -l|grep -i Monitoring.URxvt|head -1| cut -d ' ' -f 1`
+WINID=`wmctrl -x -l|grep -i "Monitoring."|head -1| cut -d ' ' -f 1`
 
 if [ ! -z "$WINID" ] ; then
     wmctrl -i -a "$WINID"
 else
-    urxvt -name Monitoring -title Monitoring -e tmux new-session 'htop' \; split-window -h 'bwm-ng' \; split-window 'gping -n 1 -b 60 damien.pobel.fr' &
+    kitty --name Monitoring --title Monitoring --override inactive_text_alpha=1 --override tab_bar_style=hidden tmux new-session 'htop' \; split-window -h 'bwm-ng' \; split-window 'gping -n 1 -b 60 damien.pobel.fr' &
 fi

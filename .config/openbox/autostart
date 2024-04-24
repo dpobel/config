@@ -8,7 +8,6 @@ sh .fehbg
 gnome-screensaver &
 dunst &
 stalonetray --dockapp-mode simple -i 32 --slot-size 40 &
-xrdb .Xdefaults &
 # cbatticon & # TODO notify
 
 # T14
