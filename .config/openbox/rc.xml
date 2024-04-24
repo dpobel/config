@@ -189,7 +189,7 @@
     </keybind>
     <keybind key="C-Print">
       <action name="Execute">
-        <execute>scrot -s -e 'mv $f ~/tmp/; cat ~/tmp/$f|xclip -selection clipboard -t image/png -i'</execute>
+        <execute>flameshot gui</execute>
       </action>
     </keybind>
     <keybind key="A-Print">
