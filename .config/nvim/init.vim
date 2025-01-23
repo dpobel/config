@@ -48,7 +48,7 @@ Plug 'yssl/QFEnter'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter' " TODO check https://gpanders.com/blog/whats-new-in-neovim-0.10/#builtin-commenting
 
 Plug 'editorconfig/editorconfig-vim'
 
@@ -87,6 +87,16 @@ vim.cmd("colorscheme nightfox")
 -- language servers
 require("mason").setup()
 
+-- Setup language servers.
+local lspconfig = require('lspconfig')
+-- lspconfig.tsserver.setup {}
+lspconfig.ts_ls.setup {}
+-- lspconfig.eslint.setup {}
+-- lspconfig.prettier.setup {}
+-- lspconfig.bashIde.setup {}
+-- lspconfig.typos_lsp.setup {}
+
+
 -- Treesitter
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
@@ -119,17 +129,6 @@ require'nvim-treesitter.configs'.setup {
     enable = true,              -- mandatory, false will disable the whole extension
     disable = { },  -- optional, list of language that will be disabled
     -- [options]
-  },
-}
-
--- Setup language servers.
-local lspconfig = require('lspconfig')
-lspconfig.pyright.setup {}
-lspconfig.tsserver.setup {}
-lspconfig.rust_analyzer.setup {
-  -- Server-specific settings. See `:help lspconfig-setup`
-  settings = {
-    ['rust-analyzer'] = {},
   },
 }
 
@@ -249,7 +248,8 @@ sources = cmp.config.sources({
 
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-require('lspconfig')['tsserver'].setup {
+-- require('lspconfig')['tsserver'].setup {
+require('lspconfig')['ts_ls'].setup {
   capabilities = capabilities
 }
 require('lspconfig')['bashls'].setup {
@@ -455,12 +455,12 @@ let g:ale_disable_lsp = 1
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   'php': ['trim_whitespace', 'php_cs_fixer'],
-\   'javascript': ['trim_whitespace', 'prettier', 'eslint'],
-\   'javascriptreact': ['trim_whitespace', 'prettier', 'eslint'],
-\   'typescript': ['trim_whitespace', 'prettier', 'eslint'],
-\   'typescriptreact': ['trim_whitespace', 'prettier', 'eslint'],
-\   'graphql': ['trim_whitespace', 'prettier', 'eslint'],
-\   'scss': ['trim_whitespace', 'prettier', 'eslint'],
+\   'javascript': ['trim_whitespace', 'prettier', 'biome'],
+\   'javascriptreact': ['trim_whitespace', 'prettier', 'biome'],
+\   'typescript': ['trim_whitespace', 'prettier', 'biome'],
+\   'typescriptreact': ['trim_whitespace', 'prettier', 'biome'],
+\   'graphql': ['trim_whitespace', 'prettier', 'biome'],
+\   'scss': ['trim_whitespace', 'prettier', 'biome'],
 \   'json': ['trim_whitespace', 'prettier'],
 \   'yaml': ['trim_whitespace'],
 \   'markdown': ['trim_whitespace']
@@ -489,7 +489,7 @@ cnoremap w!! w !sudo tee % >/dev/null
 
 map \ :nohlsearch<CR>
 
-set pastetoggle=<ins>
+"set pastetoggle=<ins>
 nnoremap <silent> <ins> :setlocal paste!<CR>i
 autocmd InsertLeave <buffer> se nopaste
 
