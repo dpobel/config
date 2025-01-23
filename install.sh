@@ -53,6 +53,7 @@ echo "(existing configurations, if any, are renamed with suffix .$$)"
 
 CONFIG_DIR=`dirname $BASH_SOURCE[0]`
 [ ! -L ~/.bashrc ] && ln -b -r --suffix=".$$" -s $CONFIG_DIR/.bashrc ~
+[ ! -L ~/.gitconfig ] && ln -b -r --suffix=".$$" -s $CONFIG_DIR/.gitconfig ~
 [ ! -L ~/.Xmodmap ] && ln -b -r --suffix=".$$" -s $CONFIG_DIR/.Xmodmap ~
 [ ! -L ~/.gtkrc-2.0 ] && ln -b -r --suffix=".$$" -s $CONFIG_DIR/.gtkrc-2.0 ~
 [ ! -L ~/.gtkrc-2.0.mine ] && ln -b -r --suffix=".$$" -s $CONFIG_DIR/.gtkrc-2.0.mine ~

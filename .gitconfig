@@ -1,0 +1,11 @@
+[core]
+	excludesfile = ~/.config/gitignore_global
+[user]
+	email = damien@pobel.fr
+	name = Damien Pobel
+[alias]
+	lg = log --oneline
+[init]
+	defaultBranch = main
+[help]
+	autocorrect = prompt
