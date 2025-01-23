@@ -1,3 +1,4 @@
+!           = nomodifier Shift Mod_Switch Mod_Switch+Shift AltGr Shift+AlgGr
 ! AltGr + ; = …
 keycode  59 = semicolon period semicolon period ellipsis multiply multiply multiply
 
@@ -16,6 +17,13 @@ keycode  32 = o O o O oe OE ocircumflex odiaeresis o O ocircumflex odiaeresis
 ! AltGr + 7 = ` on first press (grave instead of dead_grave)
 keycode  16 = egrave 7 egrave 7 grave Egrave dead_grave Egrave egrave 7 dead_grave Egrave egrave 7 dead_grave Egrave
 
-! AltGr + ^ = top arrow
-! AltGr + Shift + ^ = bottom arrow
+! AltGr + ^ = top arrow ⇧
+! AltGr + Shift + ^ = bottom arrow ⇩
 keycode  34 = dead_circumflex dead_diaeresis dead_circumflex dead_diaeresis U21E7 U21E9 dead_tilde apostrophe dead_circumflex dead_diaeresis dead_tilde apostrophe dead_circumflex dead_diaeresis dead_tilde apostrophe
+
+! AltGr + w = left arrow ⇦
+! AltGr + Shift + w = ⚠
+keycode  52 = w W w W U21E6 U26A0 guillemotleft less w W guillemotleft less w W guillemotleft less
+
+! AltGr + x = right arrow ⇨
+keycode  53 = x X x X U21E8 greater guillemotright greater x X guillemotright greater x X guillemotright greater
