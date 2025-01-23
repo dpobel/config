@@ -704,7 +704,7 @@
           <height>10%</height>
       </size>
     </application>
-    <application title="Spotify" role="">
+    <application title="Spotify" role="spotify">
       <decor>no</decor>
       <maximized>yes</maximized>
       <desktop>3</desktop>
