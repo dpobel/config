@@ -45,7 +45,7 @@ fi
 echo ''
 echo '# Installing oh my bash'
 
-[ ! -d ~/.oh-my-bash ] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+[ ! -d ~/.oh-my-bash ] && bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
 
 echo ''
 echo '# Configuring bash, keyboard, …'
