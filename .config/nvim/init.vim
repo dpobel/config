@@ -452,7 +452,7 @@ let g:ale_php_phpstan_level = '9'
 imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
 smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
 
-set laststatus=2 " display airline bar all the time
+set laststatus=3
 cnoremap w!! w !sudo tee % >/dev/null
 
 map \ :nohlsearch<CR>
