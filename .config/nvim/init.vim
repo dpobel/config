@@ -138,7 +138,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
     vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
     vim.keymap.set('n', '<space>wl', function()
@@ -431,8 +430,8 @@ nnoremap <expr> <Leader>mdn ':!firefox https://developer.mozilla.org/en-US/searc
 nnoremap <expr> <Leader>duck ':!firefox https://duckduckgo.com/?q='.expand('<cword>').'<cr>'
 
 let g:ale_sign_column_always = 1
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nnoremap <silent> <C-k> <cmd>lua vim.diagnostic.jump({ count = -1, float = true })<CR>
+nnoremap <silent> <C-j> <cmd>lua vim.diagnostic.jump({ count = 1, float = true })<CR>
 
 let g:ale_disable_lsp = 1
 let g:ale_linters_explicit = 1 " ALE ne sert que de fixer, les diagnostics viennent du LSP
