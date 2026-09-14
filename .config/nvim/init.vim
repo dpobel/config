@@ -11,7 +11,6 @@ Plug 'nvim-neo-tree/neo-tree.nvim', {'branch': 'v3.x'}
 " LSP and friends
 Plug 'neovim/nvim-lspconfig'
 Plug 'mason-org/mason.nvim'
-Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'} " Replace <CurrentMajor> by the latest released major (first number of latest release)
 
@@ -34,7 +33,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'preservim/tagbar'
 Plug 'AndrewRadev/tagalong.vim'
-Plug 'danro/rename.vim'
 Plug 'Yggdroot/indentLine'
 " Plug 'andymass/vim-matchup'
 Plug 'junegunn/fzf.vim'
