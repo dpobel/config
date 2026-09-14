@@ -23,7 +23,7 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'saadparwaiz1/cmp_luasnip'
 
-Plug 'w0rp/ale'
+Plug 'stevearc/conform.nvim'
 
 Plug 'lewis6991/gitsigns.nvim'
 
@@ -171,6 +171,26 @@ require('lualine').setup({
 })
 
 require('gitsigns').setup()
+
+-- `stop_after_first` runs the first formatter the project actually provides:
+-- the binary is resolved from its node_modules, so nothing is attempted when
+-- the project does not ship it.
+local prettierOrBiome = { 'prettier', 'biome', stop_after_first = true }
+require('conform').setup({
+  formatters_by_ft = {
+    javascript = prettierOrBiome,
+    javascriptreact = prettierOrBiome,
+    typescript = prettierOrBiome,
+    typescriptreact = prettierOrBiome,
+    graphql = prettierOrBiome,
+    json = prettierOrBiome,
+    scss = prettierOrBiome,
+    css = prettierOrBiome,
+    php = { 'php_cs_fixer' },
+    ['_'] = { 'trim_whitespace' },
+  },
+  format_on_save = { timeout_ms = 2000, lsp_format = 'fallback' },
+})
 
 require('ibl').setup({ indent = { char = '┊' } })
 
@@ -342,6 +362,7 @@ set mouse= " nvim
 set clipboard=unnamedplus
 
 set cursorline
+set signcolumn=yes
 
 set expandtab
 set ts=4
@@ -413,31 +434,8 @@ noremap <silent> <leader>q :cclose<cr>
 nnoremap <expr> <Leader>mdn ':!firefox https://developer.mozilla.org/en-US/search?q='.expand('<cword>').'<cr>'
 nnoremap <expr> <Leader>duck ':!firefox https://duckduckgo.com/?q='.expand('<cword>').'<cr>'
 
-let g:ale_sign_column_always = 1
 nnoremap <silent> <C-k> <cmd>lua vim.diagnostic.jump({ count = -1, float = true })<CR>
 nnoremap <silent> <C-j> <cmd>lua vim.diagnostic.jump({ count = 1, float = true })<CR>
-
-let g:ale_disable_lsp = 1
-let g:ale_linters_explicit = 1 " ALE is only a fixer here, diagnostics come from the LSP
-let g:ale_fix_on_save = 1
-let g:ale_biome_options = '--use-editorconfig=true'
-let g:ale_fixers = {
-\   'php': ['trim_whitespace', 'php_cs_fixer'],
-\   'javascript': ['trim_whitespace', 'prettier', 'biome'],
-\   'javascriptreact': ['trim_whitespace', 'prettier', 'biome'],
-\   'typescript': ['trim_whitespace', 'prettier', 'biome'],
-\   'typescriptreact': ['trim_whitespace', 'prettier', 'biome'],
-\   'graphql': ['trim_whitespace', 'prettier', 'biome'],
-\   'scss': ['trim_whitespace', 'prettier', 'biome'],
-\   'json': ['trim_whitespace', 'prettier'],
-\   'yaml': ['trim_whitespace'],
-\   'markdown': ['trim_whitespace']
-\}
-
-let g:ale_scss_stylelint_use_global = 1
-
-let g:ale_php_phpcs_standard = 'PSR2'
-let g:ale_php_phpstan_level = '9'
 
 " press <Tab> to expand or jump in a snippet. These can also be mapped separately
 " via <Plug>luasnip-expand-snippet and <Plug>luasnip-jump-next.
