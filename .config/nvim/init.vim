@@ -91,8 +91,8 @@ lspconfig.stylelint_lsp.setup {
 -- lspconfig.eslint.setup {}
 -- lspconfig.typos_lsp.setup {}
 
--- Treesitter (branche `main`) : le plugin n'installe que les parsers et les
--- queries, toutes les fonctionnalités sont fournies par Neovim lui-même.
+-- The plugin only installs parsers and queries, every feature comes from
+-- Neovim itself.
 local ts_languages = {
   'bash', 'css', 'diff', 'dockerfile', 'graphql', 'html', 'javascript',
   'json', 'lua', 'markdown', 'markdown_inline', 'php', 'query', 'sql',
@@ -100,8 +100,8 @@ local ts_languages = {
 }
 require('nvim-treesitter').install(ts_languages)
 
--- Remplace `highlight.enable` : `auto_install` n'existe plus, seules les
--- langues installées ci-dessus sont colorées.
+-- Highlighting is opt-in per buffer: only the languages installed above get
+-- colored.
 vim.api.nvim_create_autocmd('FileType', {
   callback = function(args)
     local lang = vim.treesitter.language.get_lang(args.match)
@@ -194,7 +194,7 @@ require('colorizer').setup({
   filetypes = { '*' },
   user_default_options = {
     mode = 'background',
-    css = true, -- rgb(), hsl(), var(--name), couleurs nommées…
+    css = true, -- rgb(), hsl(), var(--name), named colors…
     tailwind = true,
   },
 })
@@ -435,7 +435,7 @@ nnoremap <silent> <C-k> <cmd>lua vim.diagnostic.jump({ count = -1, float = true 
 nnoremap <silent> <C-j> <cmd>lua vim.diagnostic.jump({ count = 1, float = true })<CR>
 
 let g:ale_disable_lsp = 1
-let g:ale_linters_explicit = 1 " ALE ne sert que de fixer, les diagnostics viennent du LSP
+let g:ale_linters_explicit = 1 " ALE is only a fixer here, diagnostics come from the LSP
 let g:ale_fix_on_save = 1
 let g:ale_biome_options = '--use-editorconfig=true'
 let g:ale_fixers = {
