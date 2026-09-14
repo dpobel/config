@@ -12,7 +12,7 @@ Plug 'nvim-neo-tree/neo-tree.nvim', {'branch': 'v3.x'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'mason-org/mason.nvim'
 
-Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'} " Replace <CurrentMajor> by the latest released major (first number of latest release)
+Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
 
 Plug 'windwp/nvim-autopairs'
 
@@ -35,10 +35,8 @@ Plug 'tpope/vim-surround'
 Plug 'stevearc/aerial.nvim'
 Plug 'AndrewRadev/tagalong.vim'
 Plug 'lukas-reineke/indent-blankline.nvim'
-" Plug 'andymass/vim-matchup'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-"Plug 'sheerun/vim-polyglot'
 
 Plug 'yssl/QFEnter'
 
@@ -50,15 +48,11 @@ Plug 'simnalamburt/vim-mundo'
 Plug 'mhinz/vim-startify'
 
 Plug 'EdenEast/nightfox.nvim'
-" TODO: test it more
-" Plug 'navarasu/onedark.nvim'
-
 Plug 'milanglacier/minuet-ai.nvim'
 call plug#end()
 
 set termguicolors
 set bg=dark
-" colorscheme nightfox
 
 lua << EOF
 require('nightfox').setup({
@@ -76,7 +70,6 @@ vim.cmd("colorscheme nightfox")
 -- language servers
 require("mason").setup()
 
--- Setup language servers.
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -87,7 +80,6 @@ lspconfig.stylelint_lsp.setup {
     capabilities = capabilities,
     filetypes = { "css", "scss", "typescript", "typescriptreact" },
 }
--- lspconfig.eslint.setup {}
 -- lspconfig.typos_lsp.setup {}
 
 -- The plugin only installs parsers and queries, every feature comes from
@@ -111,23 +103,16 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 
--- Global mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
+-- See `:help vim.diagnostic.*`
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<space>E', vim.diagnostic.setqflist)
 
--- Use LspAttach autocommand to only map the following keys
--- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
-
-    -- Buffer local mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    -- See `:help vim.lsp.*`
     local opts = { buffer = ev.buf }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
@@ -221,16 +206,8 @@ require('colorizer').setup({
 })
 
 
--- show source in diagnostics
--- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#show-source-in-diagnostics
 vim.diagnostic.config({
   virtual_lines  = true,
-  -- virtual_text = {
-  --  source = "always",  -- Or "if_many"
-  -- },
-  -- float = {
-  --  source = "always",  -- Or "if_many"
-  --},
 })
 
 
@@ -257,7 +234,6 @@ vim.keymap.set({ 'i', 's' }, '<M-c>', function()
   end
 end)
 
--- Set up nvim-cmp.
 local cmp = require'cmp'
 
 cmp.setup({
@@ -268,19 +244,17 @@ cmp.setup({
       end,
     },
     window = {
-      -- completion = cmp.config.window.bordered(),
-      -- documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'luasnip' }, -- For luasnip users.
+      { name = 'luasnip' },
     }, {
       { name = 'buffer' },
     })
@@ -306,7 +280,6 @@ sources = cmp.config.sources({
 
 require("nvim-autopairs").setup {}
 
--- If you want insert `(` after select function or method item
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on(
   'confirm_done',
@@ -341,7 +314,8 @@ require('minuet').setup({
 
 EOF
 
-set exrc   " read .nvimrc in directory where nvim is started
+" .nvim.lua, .nvimrc and .exrc, upwards from the cwd, once trusted with :trust
+set exrc
 
 let g:startify_change_to_dir = 0
 let g:startify_update_oldfiles = 1
@@ -398,7 +372,6 @@ set undolevels=10000
 
 syntax on
 
-"set splitbelow
 set splitright
 
 :tnoremap <Esc> <C-\><C-n>
@@ -407,19 +380,14 @@ set splitright
 nmap <F11> :only<CR>
 " make current buffer full height at the far right
 nmap <F10> <C-W>L
-" make current buffer full with at the bottom
+" make current buffer full width at the bottom
 nmap <F9> <C-W>J
 
-" let's try to use it the right way
-" commented to be able to use modals in neo-tree
-" nnoremap <up> <nop>
-" nnoremap <down> <nop>
-" nnoremap <left> <nop>
-" nnoremap <right> <nop>
-" inoremap <up> <nop>
-" inoremap <down> <nop>
-" inoremap <left> <nop>
-" inoremap <right> <nop>
+" Insert mode left alone: cmp navigates its completion menu with <Up>/<Down>.
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
 
 nnoremap <Leader><Up>    :resize +5<CR>
 nnoremap <Leader><Down>  :resize -5<CR>
@@ -449,7 +417,6 @@ noremap <silent> <C-g> :Ag<cr>
 noremap <silent> <leader><C-b> :Buffers<cr>
 noremap <expr> <leader><C-g> ':Ag '.expand('<cword>').'<cr>'
 
-" quickfix close
 noremap <silent> <leader>q :cclose<cr>
 
 nnoremap <expr> <Leader>mdn ':!firefox https://developer.mozilla.org/en-US/search?q='.expand('<cword>').'<cr>'
@@ -462,9 +429,5 @@ set laststatus=3
 cnoremap w!! w !sudo tee % >/dev/null
 
 map \ :nohlsearch<CR>
-
-"set pastetoggle=<ins>
-nnoremap <silent> <ins> :setlocal paste!<CR>i
-autocmd InsertLeave <buffer> se nopaste
 
 au BufRead,BufNewFile *.md  set ft=markdown
