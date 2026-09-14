@@ -2,3 +2,5 @@
 **/.php_cs
 .importjs.js
 .*mine*
+
+**/.claude/settings.local.json
