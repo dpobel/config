@@ -45,7 +45,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'branch': 'main'}
 
 Plug 'scrooloose/nerdcommenter' " TODO check https://gpanders.com/blog/whats-new-in-neovim-0.10/#builtin-commenting
 
-Plug 'ap/vim-css-color' " does not work anymore
+Plug 'catgoose/nvim-colorizer.lua'
 
 Plug 'simnalamburt/vim-mundo'
 Plug 'mhinz/vim-startify'
@@ -173,6 +173,15 @@ require('lualine').setup({
 })
 
 require('gitsigns').setup()
+
+require('colorizer').setup({
+  filetypes = { '*' },
+  user_default_options = {
+    mode = 'background',
+    css = true, -- rgb(), hsl(), var(--name), couleurs nommées…
+    tailwind = true,
+  },
+})
 
 
 -- show source in diagnostics
