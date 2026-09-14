@@ -339,7 +339,7 @@ set title
 
 set dir=~/tmp
 set mouse= " nvim
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 set cursorline
 
