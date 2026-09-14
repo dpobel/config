@@ -22,6 +22,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'rafamadriz/friendly-snippets'
 
 Plug 'stevearc/conform.nvim'
 
@@ -236,6 +237,28 @@ vim.diagnostic.config({
 
 
 
+-- LuaSnip ships no snippet of its own, the collection comes from friendly-snippets.
+require('luasnip.loaders.from_vscode').lazy_load()
+
+-- <Tab> and <C-l> belong to minuet, <C-e> to cmp: jumps reuse the keys that
+-- already mean "next / previous diagnostic" in normal mode.
+vim.keymap.set({ 'i', 's' }, '<C-j>', function()
+  return require('luasnip').jumpable(1) and '<Plug>luasnip-jump-next' or '<C-j>'
+end, { expr = true, remap = true })
+vim.keymap.set({ 'i', 's' }, '<C-k>', function()
+  return require('luasnip').jumpable(-1) and '<Plug>luasnip-jump-prev' or '<C-k>'
+end, { expr = true, remap = true })
+
+-- Choice nodes only appear in the css snippets, and <C-e> is cmp's abort.
+-- No fallback: an unhandled <M-c> reaches the terminal as Esc + c, which would
+-- leave insert mode.
+vim.keymap.set({ 'i', 's' }, '<M-c>', function()
+  local luasnip = require('luasnip')
+  if luasnip.choice_active() then
+    luasnip.change_choice(1)
+  end
+end)
+
 -- Set up nvim-cmp.
 local cmp = require'cmp'
 
@@ -436,19 +459,6 @@ nnoremap <expr> <Leader>duck ':!firefox https://duckduckgo.com/?q='.expand('<cwo
 
 nnoremap <silent> <C-k> <cmd>lua vim.diagnostic.jump({ count = -1, float = true })<CR>
 nnoremap <silent> <C-j> <cmd>lua vim.diagnostic.jump({ count = 1, float = true })<CR>
-
-" press <Tab> to expand or jump in a snippet. These can also be mapped separately
-" via <Plug>luasnip-expand-snippet and <Plug>luasnip-jump-next.
-" imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
-" -1 for jumping backwards.
-" inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
-
-" snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
-" snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
-
-" For changing choices in choiceNodes (not strictly necessary for a basic setup).
-imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
-smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
 
 set laststatus=3
 cnoremap w!! w !sudo tee % >/dev/null
