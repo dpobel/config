@@ -53,8 +53,6 @@ Plug 'EdenEast/nightfox.nvim'
 " TODO: test it more
 " Plug 'navarasu/onedark.nvim'
 
-" Plug 'github/copilot.vim'
-" Plug 'olimorris/codecompanion.nvim'
 Plug 'milanglacier/minuet-ai.nvim'
 call plug#end()
 
