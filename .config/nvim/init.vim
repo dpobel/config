@@ -29,7 +29,7 @@ Plug 'lewis6991/gitsigns.nvim'
 
 
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
-Plug 'easymotion/vim-easymotion'
+Plug 'folke/flash.nvim'
 Plug 'tpope/vim-surround'
 Plug 'preservim/tagbar'
 Plug 'AndrewRadev/tagalong.vim'
@@ -172,6 +172,10 @@ require('lualine').setup({
 
 require('gitsigns').setup()
 
+-- use flash.nvim as a replacement of easymotion's s only
+require('flash').setup({ modes = { char = { enabled = false } } })
+vim.keymap.set({ 'n', 'o' }, 's', function() require('flash').jump() end, { desc = 'Flash jump' })
+
 require('colorizer').setup({
   filetypes = { '*' },
   user_default_options = {
@@ -283,19 +287,6 @@ EOF
 set exrc   " read .nvimrc in directory where nvim is started
 set secure " limit what can be done in .nvimrc
 
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-
-" Jump to anywhere you want with minimal keystrokes, with just one key binding.
-" `s{char}{label}`
-nmap s <Plug>(easymotion-overwin-f)
-" or
-" `s{char}{char}{label}`
-" Need one more keystroke, but on average, it may be more comfortable.
-"nmap s <Plug>(easymotion-overwin-f2)
-
-" Turn on case-insensitive feature
-let g:EasyMotion_smartcase = 1
-
 let g:indentLine_char = '┊'
 
 let g:startify_change_to_dir = 0
@@ -316,6 +307,7 @@ let g:startify_session_persistence = 1
 
 set incsearch
 set hlsearch
+set ignorecase
 set smartcase
 
 " Search results centered please
