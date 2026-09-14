@@ -43,8 +43,6 @@ Plug 'yssl/QFEnter'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'branch': 'main'}
 
-Plug 'scrooloose/nerdcommenter' " TODO check https://gpanders.com/blog/whats-new-in-neovim-0.10/#builtin-commenting
-
 Plug 'catgoose/nvim-colorizer.lua'
 
 Plug 'simnalamburt/vim-mundo'
@@ -297,11 +295,6 @@ nmap s <Plug>(easymotion-overwin-f)
 
 " Turn on case-insensitive feature
 let g:EasyMotion_smartcase = 1
-
-let g:NERDSpaceDelims = 1
-let g:NERDDefaultAlign = 'left'
-let g:NERDTrimTrailingWhitespace = 1
-let g:NERDCommentEmptyLines = 0
 
 let g:indentLine_char = '┊'
 
