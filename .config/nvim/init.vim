@@ -176,7 +176,10 @@ require('conform').setup({
   format_on_save = { timeout_ms = 2000, lsp_format = 'fallback' },
 })
 
-require('ibl').setup({ indent = { char = '┊' } })
+require('ibl').setup({
+  indent = { char = '┊' },
+  scope = { show_start = false, show_end = false },
+})
 
 -- Symbol outline: `lsp` before `treesitter` so the tree follows real scopes,
 -- the ones `gd` resolves.
