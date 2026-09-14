@@ -449,7 +449,7 @@ noremap <silent> <C-g> :Ag<cr>
 noremap <silent> <leader><C-b> :Buffers<cr>
 noremap <expr> <leader><C-g> ':Ag '.expand('<cword>').'<cr>'
 
-" quickfix close 
+" quickfix close
 noremap <silent> <leader>q :cclose<cr>
 
 nnoremap <expr> <Leader>mdn ':!firefox https://developer.mozilla.org/en-US/search?q='.expand('<cword>').'<cr>'
