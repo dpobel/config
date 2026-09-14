@@ -418,14 +418,10 @@ command! -bang -nargs=* GGrep
 noremap <silent> <C-p> :Files<cr>
 noremap <silent> <C-g> :Ag<cr>
 noremap <silent> <leader><C-b> :Buffers<cr>
-noremap <silent> <leader><C-t> :Tags<cr>
 noremap <expr> <leader><C-g> ':Ag '.expand('<cword>').'<cr>'
 
 " quickfix close 
 noremap <silent> <leader>q :cclose<cr>
-
-nnoremap <Leader>t :execute 'tjump' expand('<cword>')<CR>
-nnoremap <Leader>wt :execute 'stjump' expand('<cword>')<CR>
 
 nnoremap <expr> <Leader>mdn ':!firefox https://developer.mozilla.org/en-US/search?q='.expand('<cword>').'<cr>'
 nnoremap <expr> <Leader>duck ':!firefox https://duckduckgo.com/?q='.expand('<cword>').'<cr>'
