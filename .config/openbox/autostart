@@ -2,6 +2,11 @@
 
 export NO_AT_BRIDGE=1
 export PATH=~/bin:$PATH
+
+# needed for gnome/libadwaita based application…
+# when updating this, don't forget settings.ini for each gtk version
+export GTK_THEME=Yaru-dark
+
 eval `ssh-agent`
 ssh-add ~/.ssh/id_ecdsa
 sh .fehbg
