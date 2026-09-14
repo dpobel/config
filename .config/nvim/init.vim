@@ -31,7 +31,7 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'folke/flash.nvim'
 Plug 'tpope/vim-surround'
-Plug 'preservim/tagbar'
+Plug 'stevearc/aerial.nvim'
 Plug 'AndrewRadev/tagalong.vim'
 Plug 'Yggdroot/indentLine'
 " Plug 'andymass/vim-matchup'
@@ -171,6 +171,20 @@ require('lualine').setup({
 })
 
 require('gitsigns').setup()
+
+-- Symbol outline: `lsp` before `treesitter` so the tree follows real scopes,
+-- the ones `gd` resolves.
+require('aerial').setup({
+  backends = { 'lsp', 'treesitter', 'markdown', 'man' },
+  layout = { width = 40, max_width = { 40, 0.3 }, default_direction = 'right' },
+  show_guides = true,
+  -- Property and Constant extend aerial's defaults, to see fields and
+  -- constants without opening the file.
+  filter_kind = {
+    'Class', 'Constructor', 'Enum', 'Function', 'Interface',
+    'Module', 'Method', 'Struct', 'Property', 'Constant',
+  },
+})
 
 -- use flash.nvim as a replacement of easymotion's s only
 require('flash').setup({ modes = { char = { enabled = false } } })
@@ -391,12 +405,7 @@ map <Leader><F2> :Neotree reveal<CR>
 map <F5> :Neotree source=buffers toggle<CR>
 map <F6> :Neotree source=git_status toggle<CR>
 
-map <F3> :TagbarToggle<CR>
-let g:tagbar_width = 30
-let g:tagbar_autofocus = 1
-let g:tagbar_sort = 1
-let g:tagbar_show_visibility = 1
-
+map <F3> :AerialToggle<CR>
 au BufEnter gitlab.com_*.txt set filetype=markdown
 
 let g:fzf_layout = { 'down': '40%' }
