@@ -675,16 +675,16 @@
     <bottom>0</bottom>
   </margins>
   <applications>
-    <application class="firefox" name="Navigator">
+    <application class="firefox_firefox" name="Navigator">
       <decor>no</decor>
       <maximized>yes</maximized>
     </application>
-    <application class="Slack">
+    <application class="slack">
       <decor>no</decor>
       <maximized>yes</maximized>
       <desktop>1</desktop>
     </application>
-    <application class="Signal">
+    <application class="signal">
       <decor>no</decor>
       <maximized>no</maximized>
       <desktop>1</desktop>
