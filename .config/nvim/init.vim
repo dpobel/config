@@ -33,7 +33,7 @@ Plug 'folke/flash.nvim'
 Plug 'tpope/vim-surround'
 Plug 'stevearc/aerial.nvim'
 Plug 'AndrewRadev/tagalong.vim'
-Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim'
 " Plug 'andymass/vim-matchup'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -172,6 +172,8 @@ require('lualine').setup({
 
 require('gitsigns').setup()
 
+require('ibl').setup({ indent = { char = '┊' } })
+
 -- Symbol outline: `lsp` before `treesitter` so the tree follows real scopes,
 -- the ones `gd` resolves.
 require('aerial').setup({
@@ -300,8 +302,6 @@ EOF
 
 set exrc   " read .nvimrc in directory where nvim is started
 set secure " limit what can be done in .nvimrc
-
-let g:indentLine_char = '┊'
 
 let g:startify_change_to_dir = 0
 let g:startify_update_oldfiles = 1
