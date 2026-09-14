@@ -22,9 +22,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
-
-" Plug 'L3MON4D3/LuaSnip'
-" Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 
 Plug 'w0rp/ale'
 
@@ -58,8 +56,6 @@ Plug 'EdenEast/nightfox.nvim'
 " TODO: test it more
 " Plug 'navarasu/onedark.nvim'
 
-Plug 'nvim-tree/nvim-web-devicons'
-
 " Plug 'github/copilot.vim'
 " Plug 'olimorris/codecompanion.nvim'
 Plug 'milanglacier/minuet-ai.nvim'
@@ -87,15 +83,16 @@ require("mason").setup()
 
 -- Setup language servers.
 local lspconfig = require('lspconfig')
--- lspconfig.tsserver.setup {}
-lspconfig.ts_ls.setup {}
-lspconfig.biome.setup {}
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+lspconfig.ts_ls.setup { capabilities = capabilities }
+lspconfig.biome.setup { capabilities = capabilities }
+lspconfig.bashls.setup { capabilities = capabilities }
 lspconfig.stylelint_lsp.setup {
+    capabilities = capabilities,
     filetypes = { "css", "scss", "typescript", "typescriptreact" },
 }
 -- lspconfig.eslint.setup {}
--- lspconfig.prettier.setup {}
--- lspconfig.bashIde.setup {}
 -- lspconfig.typos_lsp.setup {}
 
 -- Treesitter (branche `main`) : le plugin n'installe que les parsers et les
@@ -242,21 +239,10 @@ sources = cmp.config.sources({
 })
 })
 
--- Set up lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
--- require('lspconfig')['tsserver'].setup {
-require('lspconfig')['ts_ls'].setup {
-  capabilities = capabilities
-}
-require('lspconfig')['bashls'].setup {
-  capabilities = capabilities
-}
-
 require("nvim-autopairs").setup {}
 
 -- If you want insert `(` after select function or method item
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-local cmp = require('cmp')
 cmp.event:on(
   'confirm_done',
   cmp_autopairs.on_confirm_done()
@@ -293,9 +279,6 @@ EOF
 set exrc   " read .nvimrc in directory where nvim is started
 set secure " limit what can be done in .nvimrc
 
-let g:js_file_import_use_fzf = 1
-let g:js_file_import_string_quote = '"'
-
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
@@ -331,8 +314,6 @@ let g:startify_lists = [
         \ ]
 let g:startify_session_sort = 1
 let g:startify_session_persistence = 1
-
-let g:copilot_node_command = '~/.nvm/versions/node/v22.13.1/bin/node'
 
 set incsearch
 set hlsearch
@@ -454,6 +435,7 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 let g:ale_disable_lsp = 1
+let g:ale_linters_explicit = 1 " ALE ne sert que de fixer, les diagnostics viennent du LSP
 let g:ale_fix_on_save = 1
 let g:ale_biome_options = '--use-editorconfig=true'
 let g:ale_fixers = {
