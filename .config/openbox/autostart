@@ -25,13 +25,12 @@ xset b off
 xprofile
 # (sleep 3 && one-spotify) &
 firefox &
-x-terminal-emulator &
+kitty --session startup &
 one-slack &
 one-signal &
 
 notify-info &
 
-one-monitoring &
 # Buggy in dual screen setup :(
 #compositor &
 

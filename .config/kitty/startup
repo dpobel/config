@@ -1,0 +1,7 @@
+new_tab monitoring
+layout tall
+launch --title="htop" htop
+launch --title "network" bwm-ng
+launch --title="ping" gping -n 1 -b 60 damien.pobel.fr
+
+new_tab
