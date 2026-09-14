@@ -1,6 +1,7 @@
 !           = nomodifier Shift Mod_Switch Mod_Switch+Shift AltGr Shift+AlgGr
 ! AltGr + ; = …
-keycode  59 = semicolon period semicolon period ellipsis multiply multiply multiply
+! Shift + AltGr + ; = ·
+keycode  59 = semicolon period semicolon period ellipsis U00B7 multiply multiply
 
 ! Properly map ²
 ! Shift + ² = ₂
@@ -27,3 +28,6 @@ keycode  52 = w W w W U21E6 U26A0 guillemotleft less w W guillemotleft less w W 
 
 ! AltGr + x = right arrow ⇨
 keycode  53 = x X x X U21E8 greater guillemotright greater x X guillemotright greater x X guillemotright greater
+
+! shift + space = nobreakspace
+keycode 65 = space nobreakspace space space space
