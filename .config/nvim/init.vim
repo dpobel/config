@@ -301,7 +301,6 @@ require('minuet').setup({
 EOF
 
 set exrc   " read .nvimrc in directory where nvim is started
-set secure " limit what can be done in .nvimrc
 
 let g:startify_change_to_dir = 0
 let g:startify_update_oldfiles = 1
@@ -319,8 +318,6 @@ let g:startify_lists = [
 let g:startify_session_sort = 1
 let g:startify_session_persistence = 1
 
-set incsearch
-set hlsearch
 set ignorecase
 set smartcase
 
@@ -339,15 +336,8 @@ set number
 set relativenumber
 
 set title
-set hidden
 
 set dir=~/tmp
-set sm
-set nobackup
-set history=50
-
-set backspace=start,eol,indent
-
 set mouse= " nvim
 set clipboard=unnamed
 
@@ -364,10 +354,7 @@ set undofile
 set undodir=~/tmp/.neovim/undo
 set undolevels=10000
 
-set modeline
-
 syntax on
-filetype plugin indent on
 
 "set splitbelow
 set splitright
