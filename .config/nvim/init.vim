@@ -157,6 +157,41 @@ require('lualine').setup({
 
 require('gitsigns').setup()
 
+-- fzf opens its result with `:edit` in the current window, which would replace
+-- the quickfix, aerial or neo-tree window we started from.
+local function focus_editable_window()
+  if vim.bo.buftype == '' then
+    return
+  end
+  local windows = { vim.fn.win_getid(vim.fn.winnr('#')) }
+  vim.list_extend(windows, vim.api.nvim_tabpage_list_wins(0))
+  for _, win in ipairs(windows) do
+    if vim.api.nvim_win_is_valid(win)
+      and vim.api.nvim_win_get_config(win).relative == ''
+      and vim.bo[vim.api.nvim_win_get_buf(win)].buftype == ''
+    then
+      vim.api.nvim_set_current_win(win)
+      return
+    end
+  end
+end
+
+local function fzf(command)
+  return function()
+    focus_editable_window()
+    vim.cmd(command)
+  end
+end
+
+vim.keymap.set({ 'n', 'v' }, '<C-p>', fzf('Files'), { desc = 'fzf files' })
+vim.keymap.set({ 'n', 'v' }, '<C-g>', fzf('Ag'), { desc = 'fzf grep' })
+vim.keymap.set({ 'n', 'v' }, '<leader><C-b>', fzf('Buffers'), { desc = 'fzf buffers' })
+vim.keymap.set({ 'n', 'v' }, '<leader><C-g>', function()
+  local word = vim.fn.expand('<cword>')
+  focus_editable_window()
+  vim.cmd('Ag ' .. word)
+end, { desc = 'fzf grep word under cursor' })
+
 require('gitlinker').setup()
 vim.keymap.set({ 'n', 'v' }, '<leader>go', '<cmd>GitLink! default_branch<cr>', { desc = 'Open on the default branch' })
 vim.keymap.set({ 'n', 'v' }, '<leader>gb', '<cmd>GitLink! current_branch<cr>', { desc = 'Open on the current branch' })
@@ -414,16 +449,6 @@ map <F3> :AerialToggle<CR>
 au BufEnter gitlab.com_*.txt set filetype=markdown
 
 let g:fzf_layout = { 'down': '40%' }
-
-command! -bang -nargs=* GGrep
-  \ call fzf#vim#grep(
-  \   'git grep -l --line-number -- '.shellescape(<q-args>), 0,
-  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
-
-noremap <silent> <C-p> :Files<cr>
-noremap <silent> <C-g> :Ag<cr>
-noremap <silent> <leader><C-b> :Buffers<cr>
-noremap <expr> <leader><C-g> ':Ag '.expand('<cword>').'<cr>'
 
 noremap <silent> <leader>q :cclose<cr>
 
