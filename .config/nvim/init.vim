@@ -446,7 +446,6 @@ map <F5> :Neotree source=buffers toggle<CR>
 map <F6> :Neotree source=git_status toggle<CR>
 
 map <F3> :AerialToggle<CR>
-au BufEnter gitlab.com_*.txt set filetype=markdown
 
 let g:fzf_layout = { 'down': '40%' }
 
