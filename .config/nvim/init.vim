@@ -27,6 +27,7 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'stevearc/conform.nvim'
 
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'linrongbin16/gitlinker.nvim'
 
 
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
@@ -155,6 +156,10 @@ require('lualine').setup({
 })
 
 require('gitsigns').setup()
+
+require('gitlinker').setup()
+vim.keymap.set({ 'n', 'v' }, '<leader>go', '<cmd>GitLink! default_branch<cr>', { desc = 'Open on the default branch' })
+vim.keymap.set({ 'n', 'v' }, '<leader>gb', '<cmd>GitLink! current_branch<cr>', { desc = 'Open on the current branch' })
 
 -- `stop_after_first` runs the first formatter the project actually provides:
 -- the binary is resolved from its node_modules, so nothing is attempted when
