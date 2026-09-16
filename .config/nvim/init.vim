@@ -86,9 +86,9 @@ lspconfig.stylelint_lsp.setup {
 -- The plugin only installs parsers and queries, every feature comes from
 -- Neovim itself.
 local ts_languages = {
-  'bash', 'css', 'diff', 'dockerfile', 'graphql', 'html', 'javascript',
-  'json', 'lua', 'markdown', 'markdown_inline', 'php', 'query', 'sql',
-  'tsx', 'typescript', 'vim', 'vimdoc',
+  'bash', 'css', 'diff', 'dockerfile', 'gitcommit', 'graphql', 'html',
+  'javascript', 'json', 'lua', 'markdown', 'markdown_inline', 'php', 'query',
+  'scss', 'sql', 'toml', 'tsx', 'typescript', 'vim', 'vimdoc', 'yaml',
 }
 require('nvim-treesitter').install(ts_languages)
 
