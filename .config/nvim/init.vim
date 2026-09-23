@@ -239,12 +239,25 @@ require('aerial').setup({
 require('flash').setup({ modes = { char = { enabled = false } } })
 vim.keymap.set({ 'n', 'o' }, 's', function() require('flash').jump() end, { desc = 'Flash jump' })
 
+local ignored_color_names = { 'gold' }
+
 require('colorizer').setup({
   filetypes = { '*' },
-  user_default_options = {
-    mode = 'background',
-    css = true, -- rgb(), hsl(), var(--name), named colors…
-    tailwind = true,
+  parsers = { css = true, tailwind = { enable = true } },
+  display = { mode = 'background' },
+  hooks = {
+    should_highlight_color = function(_, parser_name, ctx)
+      if parser_name ~= 'names' then
+        return true
+      end
+      local text = ctx.line:sub(ctx.col):lower()
+      for _, name in ipairs(ignored_color_names) do
+        if vim.startswith(text, name) then
+          return false
+        end
+      end
+      return true
+    end,
   },
 })
 
